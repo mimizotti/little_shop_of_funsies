@@ -8,9 +8,9 @@ RSpec.describe "As a visitor" do
 	it "from the root, visitor can visit items index and see all items" do
 		one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
 		two_url = "https://www.kcmaustralia.com/media/Animal%20Onesie/adventure%20time%20jake%20onesie.jpg"
-		item_one = Item.create(title: "Funsie Onesie", description: "number one", price: 800,
+		item_one = Item.create(title: "Funsie Onesie", description: "number one", price: 8.00,
 		image: one_url )
-		item_two = Item.create(title: "Funsie Twosie", description: "too awesome", price: 1200,
+		item_two = Item.create(title: "Funsie Twosie", description: "too awesome", price: 12.00,
 		image: two_url )
 		visit '/items'
 		# click_on 'All Items'
