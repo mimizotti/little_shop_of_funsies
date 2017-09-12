@@ -11,7 +11,7 @@ RSpec.describe "As a visitor" do
 		item_two = Item.new(name: "Funsie Twosie", description: "too awesome", price: 1200,
 		image: two_url )
 		visit '/'
-		click_on 'All Iems'
+		click_on 'All Items'
 		
 		expect(page).to have_content(item_one.name)
 		expect(page).to have_content(item_one.description)
