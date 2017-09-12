@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   get '/login', :to => 'sessions#new', :as => 'login'
 
-  resources :user, only: [:new]
+  resources :users, only: [:new]
 end
