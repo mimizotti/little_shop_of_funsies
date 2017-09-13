@@ -22,7 +22,6 @@ class Cart
     contents.each do |item_id, quantity|
       items[Item.find(item_id)] = quantity
     end
-    binding.pry
     items
   end
 

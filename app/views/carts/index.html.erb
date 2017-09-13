@@ -1,6 +1,6 @@
 <h1>Cart</h1>
 
-<%= @items.each do |item, quantity| %>
+<% @items.each do |item, quantity| %>
   <div class="item-#{item.id}">
     <img src=<%=item.image%> alt="Onesie" height="250" width="250">
     <p><strong><%= link_to item.title, item_path(item) %></strong></p>
