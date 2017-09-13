@@ -4,9 +4,10 @@ RSpec.describe "As a visitor" do
 	it "from the item index, visitor can visit an item's show page" do
 		one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
 		two_url = "https://www.kcmaustralia.com/media/Animal%20Onesie/adventure%20time%20jake%20onesie.jpg"
-		item_one = Item.create(title: "Funsie Onesie", description: "number one", price: 8.00,
+		category = Category.create(title: "Animals")
+		item_one = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00,
 		image: one_url )
-		item_two = Item.create(title: "Funsie Twosie", description: "too awesome", price: 12.00,
+		item_two = category.items.create(title: "Funsie Twosie", description: "too awesome", price: 12.00,
 		image: two_url )
 		
 		visit '/items'
