@@ -15,6 +15,7 @@ feature "New user can create an account" do
 
     fill_in "user[first_name]", with: "Tester"
     fill_in "user[last_name]", with: "McTesty"
+  
     fill_in "user[email]", with: "testerson@testmail.com"
     fill_in "user[password]", with: "testing"
 
