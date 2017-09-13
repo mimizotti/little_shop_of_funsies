@@ -21,7 +21,7 @@ feature "New user can create an account" do
 
       click_on "Submit"
 
-      expect(current_path).to eq(dashboard_path)
+      expect(current_path).to eq(dashboard_index_path)
       expect(page).to have_content "Logged in as Tester McTesty"
       expect(page).to have_content "testerson@testmail.com"
 
