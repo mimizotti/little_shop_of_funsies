@@ -16,8 +16,8 @@ describe "And when I click “Login” I should be on the “/login page”" do
           click_on "Login"
           expect(current_path).to eq(login_path)
 
-          fill_in "user[email]", with: "testerson@testmail.com"
-          fill_in "user[password]", with: "testing"
+          fill_in "session[email]", with: "testerson@testmail.com"
+          fill_in "session[password]", with: "testing"
 
           click_on "Login"
 
