@@ -1,0 +1,15 @@
+<h1>Cart</h1>
+
+<%= @items.each do |item, quantity| %>
+  <div class="item-#{item.id}">
+    <img src=<%=item.image%> alt="Onesie" height="250" width="250">
+    <p><strong><%= link_to item.title, item_path(item) %></strong></p>
+    <p>Description: <%= item.description %></p>
+    <p>Price: $<%= item.price %></p>
+    <p>Quantity: <%= quantity %></p>
+  </div>
+  <div class="total">
+    <% sum = 0 %>
+    <p>Total: $<%= sum += item.price %></p>
+  </div>
+<% end %>

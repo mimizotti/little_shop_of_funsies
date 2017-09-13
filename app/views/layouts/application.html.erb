@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <p>Cart: <%= @cart.total_count %></p>
+    <p><%= link_to "Cart", carts_path %>: <%= @cart.total_count %></p>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
     <% end %>

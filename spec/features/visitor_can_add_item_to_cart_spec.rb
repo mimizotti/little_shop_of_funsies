@@ -36,15 +36,20 @@ RSpec.feature "Adding items to the cart" do
 
       expect(page).to have_content("Cart: 1")
     end
-      #
-      # click_on "Cart"
-      #
-      # expect(current_path).to eq(cart_path)
-      # expect(page).to have_css("img[src=\"#{@item.image}\"]")
-      # expect(page).to have_content(@item.name)
-      # expect(page).to have_content(@item.description)
-      #
-      # within '.total' do
-      #   page.should have_content "$19.99"
+      it "they can click cart and see all their checkout items" do
+
+      click_on "Add to cart"
+
+      click_on "Cart"
+
+      expect(current_path).to eq(carts_path)
+      expect(page).to have_css("img[src=\"#{@item.image}\"]")
+      expect(page).to have_content(@item.title)
+      expect(page).to have_content(@item.description)
+
+      within '.total' do
+        expect(page).to have_content "$19.99"
+      end
+    end
   end
 end
