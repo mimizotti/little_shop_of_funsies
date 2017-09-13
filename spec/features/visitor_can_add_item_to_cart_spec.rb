@@ -46,6 +46,5 @@ RSpec.feature "Adding items to the cart" do
       #
       # within '.total' do
       #   page.should have_content "$19.99"
-    end
   end
 end
