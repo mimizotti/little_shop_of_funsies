@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root :to => 'main#index'
 
   get '/login', :to => 'sessions#new', :as => 'login'
@@ -23,5 +24,9 @@ Rails.application.routes.draw do
   #     get :dashboard
   #   end
   # end
+
+
+	resources :items, only: [:index, :show]
+	resources :categories, only: [:show]
 
 end
