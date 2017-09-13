@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
 
-resources :items, only: [:index, :show]
-resources :categories, only: [:show]
+  resources :items, only: [:index, :show]
+  resources :categories, only: [:show]
 
-resources :carts
+  resources :carts
 end
