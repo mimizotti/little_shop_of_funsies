@@ -14,7 +14,11 @@ RSpec.feature "Adding items to the cart" do
 
       click_on "Add to cart"
 
-      expect(page).to have_content("1 Black Cat Onesie has been added to your cart")
+      expect(page).to have_content("You now have 1 Black Cat Onesie")
+
+      click_on "Add to cart"
+
+      expect(page).to have_content("You now have 2 Black Cat Onesies")
 
       click_on "Cart"
 
