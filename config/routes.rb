@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
 
   resources :carts
+
+  get '/cart', :to => 'carts#index', :as => 'cart'
 end

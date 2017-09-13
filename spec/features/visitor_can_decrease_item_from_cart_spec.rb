@@ -5,8 +5,7 @@ require "rails_helper"
      describe "the visitor can remove the item" do
        it "visitor sees that she has 1 items in her cart and the subtotal of her order decreases" do
           create_items
-          visit 'items_path'
-          
+          visit items_path          
           click_on "Add to cart"
           click_on "Add to cart"
 
