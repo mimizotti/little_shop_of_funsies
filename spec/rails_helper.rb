@@ -9,12 +9,14 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'database_cleaner'
 require 'support/factory_girl'
+require 'helpers'
 
 DatabaseCleaner.strategy = :truncation
 
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Helpers
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
