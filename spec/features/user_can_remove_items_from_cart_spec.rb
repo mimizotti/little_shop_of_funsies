@@ -29,6 +29,8 @@ RSpec.feature "Removing items from cart" do
 
       click_on "Cart"
 
+      expect(current_path).to eq(cart_path)
+
       within ".item-1" do
         click_link("Remove", :match => :first)
       end

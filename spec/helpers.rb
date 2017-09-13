@@ -1,5 +1,5 @@
 module Helpers
-  def add_item_to_cart
+  def create_items
     @category = Category.create(title: "Cats")
     @item = Item.create(title: "Black Cat Onesie",
                         description: "The best cat onesie you'll ever find",
