@@ -9,14 +9,18 @@
   </head>
 
   <body>
+    <p><%= link_to "Cart", carts_path %>: <%= @cart.total_count %></p>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
     <% end %>
-    <%= yield %>
+
+
     <% if current_user %>
     Welcome, <%= current_user.first_name %>
     <%= link_to "Logout", logout_path, method: :delete %>
     <% else %>
     <% end %><br>
+    <!-- yield should be last -->
+    <%= yield %>
   </body>
 </html>
