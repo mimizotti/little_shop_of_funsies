@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{@user.first_name} #{@user.last_name}"
-      redirect_to root_path
+      redirect_to dashboard_index_path
     else
       flash[:failure] = "That login was unsuccessful"
       redirect_to login_path
