@@ -10,6 +10,6 @@
   </div>
   <div class="total">
     <% sum = 0 %>
-    <p>Total: $<%= sum += item.price %></p>
+    <p>Total: $<%= sum += (item.price * quantity) %></p>
   </div>
 <% end %>

@@ -40,15 +40,17 @@ RSpec.feature "Adding items to the cart" do
 
       click_on "Add to cart"
 
+      click_on "Add to cart"
+
       click_on "Cart"
 
       expect(current_path).to eq(carts_path)
       expect(page).to have_css("img[src=\"#{@item.image}\"]")
       expect(page).to have_content(@item.title)
       expect(page).to have_content(@item.description)
-      save_and_open_page
+      expect(page).to have_content("Quantity: 2")
       within '.total' do
-        expect(page).to have_content "$19.99"
+        expect(page).to have_content "$39.98"
       end
     end
   end
