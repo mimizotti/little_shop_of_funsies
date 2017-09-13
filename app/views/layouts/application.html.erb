@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
     <%= yield %>
+    <% if current_user %>
+    Welcome, <%= current_user.first_name %>
+    <%= link_to "Logout", logout_path, method: :delete %>
+    <% else %>
+    <% end %><br>
   </body>
 </html>
