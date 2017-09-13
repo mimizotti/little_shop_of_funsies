@@ -7,11 +7,12 @@
 	<h3>Items:</h3>
 	<div>
 		<% @items.each do |item| %>
-		<div>
+		<div class="item-#{item.id}">
+			<img src=<%=item.image%> alt="Onesie" height="250" width="250">
 			<p><strong><%= link_to item.title, item_path(item) %></strong></p>
 			<p>Description: <%= item.description %></p>
 			<p>Price:$ <%= item.price %></p>
-			<img src=<%=item.image%>>
+			<%= link_to "Add to cart", carts_path(item_id: item.id), method: :post %>
 		</div>
 			<% end %>
 	</div>
