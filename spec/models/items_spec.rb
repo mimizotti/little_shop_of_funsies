@@ -62,10 +62,13 @@ describe Item do
 			end
 		end
 	end
-	xdescribe "relationships" do
+	describe "relationships" do
     it "belongs to a category" do
-      job = Job.create(title: "Software", level_of_interest: 70, description: "Wahooo")
-      expect(job).to respond_to(:company)
+      category = Category.create(title: "Animals")
+			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
+			item_one = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00,
+			image: one_url )
+      expect(item).to respond_to(:category)
     end
   end
 end
