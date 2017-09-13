@@ -6,12 +6,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <style>
+    .successfully_removed {
+            color: green;
+    }
+    </style>
   </head>
 
   <body>
     <p><%= link_to "Cart", carts_path %>: <%= @cart.total_count %></p>
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+      <%= content_tag :div, raw(msg), class: name %>
     <% end %>
 
 

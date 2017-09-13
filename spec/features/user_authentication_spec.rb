@@ -7,6 +7,7 @@ describe "And when I click “Login” I should be on the “/login page”" do
       describe "Then my current page should be “/dashboard”" do
         it " And I should see a message in the navbar that says “Logged in as SOME_USER” as well as my profile information and I  a link for “Logout, but no link for log_in”" do
 
+
           user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
 
           visit '/'
@@ -89,5 +90,6 @@ describe "And when I click “Login” I should be on the “/login page”" do
         end
       end
     end
+
   end
 end
