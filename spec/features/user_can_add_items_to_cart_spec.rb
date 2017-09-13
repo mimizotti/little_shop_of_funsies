@@ -3,12 +3,8 @@ require 'rails_helper'
 RSpec.feature "Adding items to the cart" do
   before(:each) do
 
-    @category = Category.create(title: "Cats")
-    @item = Item.create(title: "Black Cat Onesie",
-                        description: "The best cat onesie you'll ever find",
-                        price: 19.99,
-                        image: "https://images-na.ssl-images-amazon.com/images/I/41CFHIae7TL._SL500_.jpg",
-                        category_id: category)
+    create_items
+
   end
   context "As a visitor" do
     it "I should be able to add items to cart" do
