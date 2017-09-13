@@ -17,9 +17,10 @@ RSpec.feature "Removing an item from my cart" do
       expect(page).to have_link("Remove")
 
       click_link("Remove")
+      save_and_open_page
 
       expect(current_path).to eq(carts_path)
-      expect(page).to have_content("Successfully removed @item.title from your cart.")
+      expect(page).to have_content("Successfully removed #{@item.title} from your cart.")
       expect(page).to have_link(@item.title, item_path(@item))
     end
   end
