@@ -20,6 +20,10 @@
             height:auto;
             padding: 5px;
     }
+
+    a {
+            color: black;
+        }
     .center-block {
             display: block;
             margin-right: auto;
@@ -55,7 +59,7 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
           <div class="dropdown-menu">
             <% @categories.each do |category| %>
-              <a class="dropdown-item" href="/#{category.title}"><%= category.title %></a>
+            <%= link_to category.title, category_path(category.slug), class: "dropdown-item" %>
             <% end %>
           </div>
       </li>
