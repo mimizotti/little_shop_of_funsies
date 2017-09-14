@@ -1,8 +1,7 @@
 class Category < ApplicationRecord
 	has_many :items
 	validates :title, presence: true
-	
-	def to_param
-		title.parameterize
-	end
+	validates :title, :slug, presence: true
+	extend FriendlyId
+  friendly_id :title, use: :slugged
 end
