@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
 
+<<<<<<< HEAD
   resources :carts, only: [:index, :create]
 
   patch '/cart', :to => 'carts#increase'
@@ -26,4 +27,8 @@ Rails.application.routes.draw do
 
 
 
+=======
+resources :carts, only: [:index, :create, :destroy]
+get '/:category', to: 'categories#show', param: :slug, as: "category"
+>>>>>>> orders
 end
