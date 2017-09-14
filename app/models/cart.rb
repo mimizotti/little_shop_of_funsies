@@ -34,4 +34,5 @@ class Cart
     end
     items
   end
+
 end
