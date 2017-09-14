@@ -5,6 +5,7 @@ RSpec.describe "As a visitor" do
 			create_items
 	    visit items_path
 			click_on "Add to cart"
+			click_on "Add to cart"
 			visit '/carts'
 			expect(page).to have_content("Create new account")
 			expect(page).to have_content("Login")
@@ -15,9 +16,8 @@ RSpec.describe "As a visitor" do
 	   		fill_in "user[password]", with: "testing"
 			click_on "Submit"
 			visit '/carts'
-			expect(page).to have_content("Funsie Onesie")
-			expect(page).to have_content("Funsie Twosie")
-			expect(page).to have_content("Checkout")
+			expect(page).to have_content("Black Cat Onesie")
+			expect(page).to have_content("Quantity:")
 		end
 	end
 end

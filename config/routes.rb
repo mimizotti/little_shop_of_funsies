@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   put '/cart', :to => 'carts#increase'
 
   get '/:category', to: 'categories#show', param: :slug, as: "category"
+  
+end
 
 
 
