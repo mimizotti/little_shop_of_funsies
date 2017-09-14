@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LittleShopOfFunsies</title>
+    <title>Little Shop Of Funsies</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <style>
     .successfully_removed {
             color: green;
+    }
+    h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 100px;
     }
     </style>
   </head>
 
   <body>
-    <p><%= link_to "Cart", carts_path %>: <%= @cart.total_count %></p>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <%= link_to 'Login', login_path, class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Logout', logout_path, class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign Up', new_user_path, class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Dashboard', dashboard_index_path, class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Cart', carts_path, class: "btn" %>
+        <span class="badge badge-secondary"><%= @cart.total_count %></span>
+      </li>
+    </ul>
+    <div class="container">
+      <center><h1><u>Little Shop Of Funsies</u></h1></center>
+    </div>
+
     <% flash.each do |name, msg| %>
       <%= content_tag :div, raw(msg), class: name %>
     <% end %>
 
-
-    <% if current_user %>
-    Welcome, <%= current_user.first_name %>
-    <%= link_to "Logout", logout_path, method: :delete %>
-    <% else %>
-    <% end %><br>
-    <!-- yield should be last -->
     <%= yield %>
   </body>
 </html>
