@@ -17,7 +17,7 @@ RSpec.describe "As a visitor" do
 			click_on "Submit"
 			visit '/carts'
 			expect(page).to have_content("Black Cat Onesie")
-			expect(page).to have_content("Quantity:")
+			expect(page).to have_content("Quantity: 2")
 		end
 	end
 end
