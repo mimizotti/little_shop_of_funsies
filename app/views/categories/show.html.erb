@@ -4,16 +4,22 @@
     <title>Shop</title>
 </head>
 <body>
-    <h3>Items:</h3>
-    <div>
+
+  <div class="container">
+  	<div class="row">
         <% @category.items.each do |item| %>
-        <div class="item-#{item.id}">
-            <img src=<%=item.image%> alt="Onesie" height="250" width="250">
+        <div class="center-block">
+          <div class="card border-white" style="width: 15rem;">
+            <%= image_tag item.image, class: "card-img-top" %>
+            <div class="card-body">
             <p><strong><%= link_to item.title, item_path(item) %></strong></p>
-            <p>Description: <%= item.description %></p>
             <p>Price:$ <%= item.price %></p>
-            <%= link_to "Add to cart", carts_path(item_id: item.id), method: :post %>
-        </div>
-        <% end %>
-    </div>
+            <%= link_to "Add to cart", carts_path(item_id: item.id), method: :post, class: "badge badge-primary" %></center>
+          </div>
+  			</div>
+  		</div>
+  		<% end %>
+  	</div>
+  </div>
+
 </body>

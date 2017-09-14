@@ -2,7 +2,8 @@
 
 <% @items.each do |item, quantity| %>
   <div class="item-#{item.id}">
-    <img src=<%=item.image%> alt="Onesie" height="250" width="250">
+    <!-- <img src=<%=item.image%> alt="Onesie" height="250" width="250"> -->
+    <%= image_tag item.image %>
     <p><strong><%= link_to item.title, item_path(item) %></strong></p>
     <p>Description: <%= item.description %></p>
     <p>Price: $<%= item.price %></p>
