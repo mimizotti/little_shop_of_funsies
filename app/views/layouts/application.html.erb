@@ -13,7 +13,7 @@
     }
     h1 {
             font-family: 'Pacifico', cursive;
-            font-size: 100px;
+            font-size: 65px;
     }
     </style>
   </head>
@@ -38,9 +38,14 @@
       </li>
     </ul>
     <div class="container">
-      <center><h1><u>Little Shop Of Funsies</u></h1></center>
+      <div class="title">
+        <center>
+          <h1><u>Little Shop Of Funsies</u></h1><br />
+          <img src="https://preview.ibb.co/mBbj1v/house_of_funsies_banner.png" alt="house_of_funsies_banner" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>
+        </center>
+      </div>
+    </center>
     </div>
-
     <% flash.each do |name, msg| %>
       <%= content_tag :div, raw(msg), class: name %>
     <% end %>
