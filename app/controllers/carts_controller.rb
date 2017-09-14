@@ -13,6 +13,18 @@ class CartsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def increase
+    item_id = params[:format]
+    @cart.increase_quantity_item(item_id)
+    redirect_to '/cart'
+  end
+
+  def decrease
+    item_id = params[:format]
+    @cart.decrease_quantity_item(item_id)
+    redirect_to '/cart'
+  end
+
   def destroy
     item = Item.find(params[:id])
     @cart.contents.delete(params[:id])

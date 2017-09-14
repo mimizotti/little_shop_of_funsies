@@ -1,5 +1,3 @@
-
-
 <h1>Cart</h1>
 
 <% @items.each do |item, quantity| %>
@@ -10,7 +8,9 @@
     <p>Price: $<%= item.price %></p>
     <p>Quantity: <%= quantity %></p>
     <p>Subtotal: $<%= quantity * item.price %></p>
-    <p><%= link_to "Remove", cart_path(item), method: :delete %></p>
+    <p><%= link_to "Decrease quantity", cart_path(item), action: :decrease, method: :put %></p>
+    <p><%= link_to "Increase quantity", cart_path(item), action: :increase, method: :patch %></p>
+    <p><%= link_to "Remove", cart_path(id: item.id), method: :delete %></p>
   </div>
   <div class="total">
     <% sum = 0 %>

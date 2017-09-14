@@ -24,4 +24,3 @@ RSpec.feature "Removing an item from my cart" do
     end
   end
 end
-
