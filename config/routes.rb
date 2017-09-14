@@ -22,6 +22,4 @@ Rails.application.routes.draw do
 
   get '/:category', to: 'categories#show', param: :slug, as: "category"
 
-
-
 end
