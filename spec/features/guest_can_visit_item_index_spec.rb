@@ -6,6 +6,7 @@ RSpec.describe "As a visitor" do
 		visit '/items'
 		# click_on 'All Items'
 
+
 		expect(page).to have_content(@item_one.title)
 		expect(page).to have_content(@item_one.price)
 		expect(page).to have_css("img[src=\"#{@one_url}\"]")
