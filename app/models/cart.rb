@@ -17,9 +17,6 @@ class Cart
     if condition == "decrease"
       if contents[id.to_s] > 0
         contents[id.to_s] -=1
-        if contents[id.to_s] == 0
-          destroy
-        end
       end
     elsif condition == "increase"
       contents[id.to_s] += 1

@@ -14,9 +14,12 @@ class CartsController < ApplicationController
   end
 
   def update
-    item_id = params[:format]
+    item_id = params[:id]
     condition = params[:condition]
     @cart.item_quantity(item_id, condition)
+    if @cart.contents[item_id] == 0
+      @cart.contents.delete(params[:id])
+    end
     redirect_to cart_path
   end
 
