@@ -19,7 +19,12 @@
             width:auto;
             height:auto;
             padding: 5px;
-          }
+    }
+    .center-block {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+    }
     </style>
   </head>
 
@@ -39,8 +44,11 @@
           <%= link_to 'Dashboard', dashboard_index_path, class: "nav-link active" %>
         </li>
       <% else %>
+      <li class="nav-item">
+        <%= link_to 'Sign Up', new_user_path, class: "nav-link active" %>
+      </li>
         <li class="nav-item">
-          <%= link_to 'Sign Up', new_user_path, class: "nav-link active" %>
+          <%= link_to 'Items', items_path, class: "nav-link active" %>
         </li>
       <% end %>
       <li class="nav-item dropdown">
