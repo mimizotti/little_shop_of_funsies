@@ -8,8 +8,8 @@ RSpec.describe "As a user" do
 			OrderItem.create(order: order_1, item: @item_two)
 			allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 			visit '/orders'
-			expect(page).to have_content("Funsie Onesie")
-			expect(page).to have_content("Funsie Twosie")
+			click_on order_1.created_at
+			expect(current_path).to eq(order_path(order_1))
 			expect(page).to have_content("Total Price: $20.0")
 		end
 	end

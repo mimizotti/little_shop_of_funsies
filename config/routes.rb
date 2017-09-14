@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   delete '/logout', :to => 'sessions#destroy'
 
   resources :users, only: [:new, :create]
+  
+  resources :orders, only: [:index, :show]
 
   resources :dashboard, only: [:index]
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -25,6 +28,9 @@ get '/:category', to: 'categories#show', param: :slug, as: "category"
 =======
 >>>>>>> e739e133aaaf2b2d5c047e07ab3d8e759ec23e50
   resources :carts, only: [:index, :create]
+=======
+  resources :carts, only: [:index, :create, :destroy]
+>>>>>>> orders-2
 
   patch '/cart', :to => 'carts#increase'
 
@@ -33,6 +39,7 @@ get '/:category', to: 'categories#show', param: :slug, as: "category"
   delete '/cart', :to => 'carts#destroy'
 
   get '/:category', to: 'categories#show', param: :slug, as: "category"
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -48,5 +55,12 @@ get '/:category', to: 'categories#show', param: :slug, as: "category"
 =======
   
 >>>>>>> e739e133aaaf2b2d5c047e07ab3d8e759ec23e50
+=======
+  
+  
+
+
+
+>>>>>>> orders-2
 end
 
