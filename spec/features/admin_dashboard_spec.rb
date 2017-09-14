@@ -19,7 +19,7 @@ require 'rails_helper'
   describe "as a logged in user when I visit /admin/dashboard" do
     it "I see a 404 error" do
 
-      default_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com" password: "boom")
+      default_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(default_user)
 
@@ -45,7 +45,7 @@ end
 feature "as an Admin" do
   describe "when I log into my account" do
     it "I am redirected to the Admin Dashboard" do
-      admin = User.create(username: "Admin", password: "boom", role: "admin")
+      admin = User.create(first_name: "Admin", last_name:"McAdmin", email: "admin@email", password: "boom", role: "admin")
 
       visit login_path
       fill_in "[session]email", with: admin.email
