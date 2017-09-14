@@ -30,11 +30,11 @@ RSpec.feature "Adding items to the cart" do
     end
     it "the total number of items in the cart increments" do
 
-      expect(page).to have_content("Cart: 0")
+      expect(page).to have_content("Cart 0")
 
       click_on "Add to cart"
 
-      expect(page).to have_content("Cart: 1")
+      expect(page).to have_content("Cart 1")
     end
       it "they can click cart and see all their checkout items" do
 
