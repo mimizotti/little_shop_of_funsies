@@ -14,12 +14,13 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
 
+  resources :carts, only: [:index, :create]
 
-  resources :carts, only: [:index, :create, :destroy]
+  patch '/cart', :to => 'carts#increase'
 
   put '/cart', :to => 'carts#decrease'
 
-  put '/cart', :to => 'carts#increase'
+  delete '/cart', :to => 'carts#destroy'
 
   get '/:category', to: 'categories#show', param: :slug, as: "category"
   

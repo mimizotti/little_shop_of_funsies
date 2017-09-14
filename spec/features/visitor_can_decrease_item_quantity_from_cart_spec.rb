@@ -6,10 +6,11 @@ require "rails_helper"
        it "visitor sees that she has 1 items in her cart and the subtotal of her order decreases" do
           create_items
           visit items_path
-          click_on "Add to cart"
-          click_on "Add to cart"
 
-          visit "/cart"
+          click_on "Add to cart"
+          click_on "Add to cart"
+          
+          visit carts_path
           expect(page).to have_content(2)
           expect(page).to have_content(39.98)
           expect(page).to have_content(@item.title)
