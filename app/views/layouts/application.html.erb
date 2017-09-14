@@ -34,11 +34,7 @@
 
   <body>
     <ul class="nav justify-content-center">
-      <% if current_user %>
-        <li class="nav-item">
-          <%= link_to 'Logout', logout_path, method: :delete, class: "nav-link active" %>
-        </li>
-      <% else %>
+      <% if current_user.nil? %>
         <li class="nav-item">
           <%= link_to 'Login', login_path, class: "nav-link active" %>
         </li>
@@ -51,10 +47,10 @@
       <li class="nav-item">
         <%= link_to 'Sign Up', new_user_path, class: "nav-link active" %>
       </li>
-        <li class="nav-item">
-          <%= link_to 'Items', items_path, class: "nav-link active" %>
-        </li>
       <% end %>
+      <li class="nav-item">
+        <%= link_to 'Items', items_path, class: "nav-link active" %>
+      </li>
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
           <div class="dropdown-menu">
@@ -67,6 +63,12 @@
         <%= link_to 'Cart', carts_path, class: "btn" %>
         <span class="badge badge-secondary"><%= @cart.total_count %></span>
       </li>
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to 'Logout', logout_path, method: :delete, class: "nav-link active" %>
+        </li>
+      <% end %>
+
     </ul>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, raw(msg), class: name %>

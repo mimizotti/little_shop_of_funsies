@@ -13,11 +13,14 @@
     <p><%= link_to "Increase quantity", cart_path(id: item.id, condition: "increase"), action: :update, method: :patch %></p>
     <p><%= link_to "Remove", cart_path(id: item.id), method: :delete %></p>
   </div>
-  <div class="total">
-    <% sum = 0 %>
-    <p>Total: $<%= sum += (item.price * quantity) %></p>
-  </div>
 <% end %>
+<div class="total">
+  <% sum = 0 %>
+  <% @items.each do |item, quantity| %>
+    <% sum += (item.price * quantity) %>
+  <% end %>
+  <p><b>Total: $<%= sum %></b></p>
+</div>
 <div>
   <% if current_user %>
   <%= link_to "Checkout", dashboard_index_path %>
