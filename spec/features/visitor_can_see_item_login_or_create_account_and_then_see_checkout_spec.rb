@@ -10,13 +10,12 @@ RSpec.describe "As a visitor" do
 			expect(page).to have_content("Login")
 			click_on "Create new account"
 			fill_in "user[first_name]", with: "Tester"
-	    		fill_in "user[last_name]", with: "McTesty"
-	    		fill_in "user[email]", with: "testerson@testmail.com"
-	   		fill_in "user[password]", with: "testing"
+	    fill_in "user[last_name]", with: "McTesty"
+	    fill_in "user[email]", with: "testerson@testmail.com"
+	    fill_in "user[password]", with: "testing"
 			click_on "Submit"
 			visit '/carts'
-			expect(page).to have_content("Black Cat Onesie")
-			expect(page).to have_content("Quantity: 2")
+			expect(page).to have_content("Checkout")
 		end
 	end
 end
