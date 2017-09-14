@@ -10,10 +10,18 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
 
-  resources :items, only: [:index, :show]
-  resources :categories, only: [:show]
-
-  resources :carts
-
   get '/cart', :to => 'carts#index', :as => 'cart'
+
+  resources :items, only: [:index, :show]
+
+  resources :carts, only: [:index, :create, :destroy]
+
+  put '/cart', :to => 'carts#decrease'
+
+  put '/cart', :to => 'carts#increase'
+
+  get '/:category', to: 'categories#show', param: :slug, as: "category"
+
+
+
 end
