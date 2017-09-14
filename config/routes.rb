@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   delete '/logout', :to => 'sessions#destroy'
 
   resources :users, only: [:new, :create]
+  
+  resources :orders, only: [:index]
 
   resources :dashboard, only: [:index]
 
@@ -23,6 +25,8 @@ Rails.application.routes.draw do
   delete '/cart', :to => 'carts#destroy'
 
   get '/:category', to: 'categories#show', param: :slug, as: "category"
+  
+  
 
 
 
