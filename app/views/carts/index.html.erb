@@ -18,3 +18,11 @@
     <p>Total: $<%= sum += (item.price * quantity) %></p>
   </div>
 <% end %>
+<div>
+  <% if current_user %>
+  <%= link_to "Checkout", dashboard_index_path %>
+  <% else %>
+  <%= link_to "Login", login_path %> <br />
+  <%= link_to "Create new account", new_user_path %>
+  <% end %>
+</div>

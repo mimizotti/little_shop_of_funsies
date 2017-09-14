@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   delete '/cart', :to => 'carts#destroy'
 
   get '/:category', to: 'categories#show', param: :slug, as: "category"
-
+  
 end
+
