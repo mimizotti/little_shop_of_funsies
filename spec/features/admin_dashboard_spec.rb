@@ -9,7 +9,7 @@ require 'rails_helper'
 
           allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)
 
-          visit admin_dashboard_path
+          visit admin_dashboards_path
           expect(page).to have_content("Admin Dashboard")
 
       end
@@ -23,7 +23,7 @@ require 'rails_helper'
 
       allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(default_user)
 
-      visit admin_dashboard_path
+      visit admin_dashboards_path
 
       expect(page).to have_content("404")
 
@@ -34,7 +34,7 @@ require 'rails_helper'
   describe "as a visitor when I visit /admin/dashboard" do
     it "I see a 404 error" do
 
-      visit admin_dashboard_path
+      visit admin_dashboards_path
 
       expect(page).to have_content("404")
 
