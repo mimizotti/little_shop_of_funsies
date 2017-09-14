@@ -6,10 +6,11 @@
 <body>
 	<h4><%= link_to "Shop", items_path %></h4>
 	<div>
+		<%= image_tag @item.image %>
 		<p><strong><%= @item.title %></strong></p>
 		<p>Description: <%= @item.description %></p>
 		<p>Price:$ <%= @item.price %></p>
 		<img src=<%=@item.image%>>
 	</div>
-	
+
 </body>

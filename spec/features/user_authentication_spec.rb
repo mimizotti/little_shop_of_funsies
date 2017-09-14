@@ -20,7 +20,9 @@ describe "And when I click “Login” I should be on the “/login page”" do
           fill_in "session[email]", with: "testerson@testmail.com"
           fill_in "session[password]", with: "testing"
 
-          click_on "Login"
+          within(".action") do
+            click_on("Login")
+          end
 
           expect(current_path).to eq(dashboard_index_path)
           expect(page).to have_content "Logged in as Tester McTesty"
@@ -52,7 +54,9 @@ describe "And when I click “Login” I should be on the “/login page”" do
             fill_in "session[email]", with: "testerson@testmail.com"
 
 
-            click_on "Login"
+            within(".action") do
+              click_on("Login")
+            end
 
             expect(current_path).to eq(login_path)
             expect(page).to have_content "That login was unsuccessful"
@@ -80,7 +84,9 @@ describe "And when I click “Login” I should be on the “/login page”" do
               fill_in "session[password]", with: "testing"
 
 
-              click_on "Login"
+              within(".action") do
+                click_on("Login")
+              end
 
               expect(current_path).to eq(login_path)
               expect(page).to have_content "That login was unsuccessful"

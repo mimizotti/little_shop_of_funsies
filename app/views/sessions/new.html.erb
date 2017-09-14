@@ -1,13 +1,26 @@
-<%= link_to "Create Account", new_user_path %>
-
-<%= form_for(:session, url: login_path) do |f| %>
-
-<%= f.label :email %>
-<%= f.text_field :email %>
-
-<%= f.label :password %>
-<%= f.password_field :password %>
-
-<%= f.submit name="Login" %>
- 
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-3">
+    <table class="table">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <tr>
+          <td class="table-light"><%= f.label :email %></td>
+          <td class="table-light"><%= f.text_field :email %></td>
+        </tr>
+        <tr>
+          <td class="table-light"><%= f.label :password %></td>
+          <td class="table-light"><%= f.password_field :password %></td>
+        </tr>
+        <tr class="action">
+          <td class="table-light"><%= f.submit name="Login", class: "btn btn-primary" %></td>
+          <td class="table-light"><small>Don't have an account with us? <%= link_to "Create Account", new_user_path %></small></td>
+        </tr>
+      <% end %>
+    </div>
+  </div>
+    <div class="col-3">
+      <%= image_tag 'login.png' %>
+    </div>
+</div>
