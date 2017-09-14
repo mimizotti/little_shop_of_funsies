@@ -9,7 +9,7 @@
 			<% @user.orders.each do |order| %>
 			<ul>
 				<ui>Total Price: $<%= order.total_price %></ui>
-				<ui><%= order.created_at %></ui>
+				<ui><%= link_to order.created_at, order_path(order) %></ui>
 				<ul>
 					<% order.items.each do |item| %>
 					<ui> <%= item.title %>: $<%= item.price %></ui>
