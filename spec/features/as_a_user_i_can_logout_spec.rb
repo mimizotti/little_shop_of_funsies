@@ -7,9 +7,13 @@ RSpec.describe "As a visitor I can login" do
 		click_on 'Login'
 		fill_in "session[email]", with: "testerson@testmail.com"
 		fill_in "session[password]", with: "testing"
-		click_on 'Login'
+
+		within(".action") do
+			click_on("Login")
+		end
 		click_on 'Logout'
 		expect(page).to have_content("Login")
 
 	end
+
 end
