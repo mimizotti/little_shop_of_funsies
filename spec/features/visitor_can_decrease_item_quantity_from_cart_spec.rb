@@ -41,7 +41,7 @@ require "rails_helper"
 
         click_on "Decrease quantity"
 
-        expect(page).to_not have_content(@item.title)
+        expect(page).to have_content("Successfully removed")
         expect(page).to_not have_content("Subtotal: $19.99")
       end
      end
