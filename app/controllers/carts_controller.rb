@@ -19,6 +19,7 @@ class CartsController < ApplicationController
     @cart.item_quantity(item_id, condition)
     if @cart.contents[item_id] == 0
       @cart.contents.delete(params[:id])
+      flash[:successfully_removed] = "Successfully removed <a href=#{item_path(item)}>#{item.title}</a> from your cart."
     end
     redirect_to cart_path
   end
