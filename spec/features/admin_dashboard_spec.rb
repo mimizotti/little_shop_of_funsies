@@ -48,10 +48,12 @@ feature "as an Admin" do
       admin = User.create(first_name: "Admin", last_name:"McAdmin", email: "admin@email", password: "boom", role: "admin")
 
       visit login_path
-      fill_in "[session]email", with: admin.email
-      fill_in "[session]password", with: admin.password
-      click_on "Login"
 
+      fill_in "session[email]", with: admin.email
+      fill_in "session[password]", with: admin.password
+      within(".action") do
+        click_on("Login")
+      end 
       expect(page).to have_content("Admin Dashboard")
       expect(current_path).to eq(admin_dashboard_path)
     end
