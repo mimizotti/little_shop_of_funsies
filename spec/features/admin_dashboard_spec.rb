@@ -7,7 +7,7 @@ require 'rails_helper'
 
           admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", role: "admin")
 
-          allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)
+          allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
 
           visit admin_dashboards_path
           expect(page).to have_content("Admin Dashboard")
@@ -54,7 +54,10 @@ feature "as an Admin" do
       within(".action") do
         click_on("Login")
       end
+<<<<<<< HEAD
       
+=======
+>>>>>>> f5084f61af7a9e056e4e808a00a9f19292f746ef
       expect(page).to have_content("Admin Dashboard")
       expect(current_path).to eq(admin_dashboards_path)
     end
