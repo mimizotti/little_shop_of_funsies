@@ -54,10 +54,7 @@ feature "as an Admin" do
       within(".action") do
         click_on("Login")
       end
-<<<<<<< HEAD
       
-=======
->>>>>>> f5084f61af7a9e056e4e808a00a9f19292f746ef
       expect(page).to have_content("Admin Dashboard")
       expect(current_path).to eq(admin_dashboards_path)
     end
