@@ -15,7 +15,10 @@ RSpec.describe "As a visitor" do
 	    fill_in "user[password]", with: "testing"
 			click_on "Submit"
 			visit '/carts'
-			expect(page).to have_content("Checkout")
+
+			expect(page).to have_content("Black Cat Onesie")
+			expect(page).to have_content("Quantity: 1")
+
 		end
 	end
 end

@@ -8,9 +8,9 @@ RSpec.describe "As a user" do
 			OrderItem.create(order: order_1, item: @item_two)
 			allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 			visit '/orders'
-			expect(page).to have_content("Funsie Onesie")
-			expect(page).to have_content("Funsie Twosie")
-			expect(page).to have_content("Total Price: $20.0")
+			expect(page).to have_content(order_1.id)
+			expect(page).to have_content(order_1.status.capitalize)
+			expect(page).to have_content(20.0)
 		end
 	end
 end

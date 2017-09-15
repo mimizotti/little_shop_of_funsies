@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
   describe "admin dashboard feature" do
@@ -8,7 +7,7 @@ require 'rails_helper'
 
           admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", role: "admin")
 
-          allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)
+          allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
 
           visit admin_dashboards_path
           expect(page).to have_content("Admin Dashboard")
@@ -45,18 +44,23 @@ end
 
 feature "as an Admin" do
   describe "when I log into my account" do
-    xit "I am redirected to the Admin Dashboard" do
-      admin = User.create(email: "Admin", password: "boom", role: "admin")
+
+    it "I am redirected to the Admin Dashboard" do
+      admin = User.create(first_name: "Admin", last_name:"McAdmin", email: "admin@email", password: "boom", role: "admin")
 
       visit login_path
-      save_and_open_page
-      fill_in "[session]email", with: admin.email
-      fill_in "[session]password", with: admin.password
-      click_on "Login"
 
+
+      fill_in "session[email]", with: admin.email
+      fill_in "session[password]", with: admin.password
+      within(".action") do
+        click_on("Login")
+      end
+      
       expect(page).to have_content("Admin Dashboard")
-      expect(current_path).to eq(admin_dashboards_url)
+
+      expect(current_path).to eq(admin_dashboards_path)
+
     end
   end
 end
-
