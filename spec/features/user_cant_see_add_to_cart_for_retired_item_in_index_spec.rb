@@ -9,7 +9,6 @@ RSpec.describe 'As a visitor' do
 			image: one_url, condition: 'retired' )
 			
 			visit items_path
-			save_and_open_page
 			
 			expect(page).not_to have_content("Add to cart")
 		end
