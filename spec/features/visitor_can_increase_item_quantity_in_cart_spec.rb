@@ -16,7 +16,7 @@ feature "Visitor can increase an item's quantity in the cart" do
     expect(page).to have_content(@item.title)
     expect(page).to have_content(1)
 
-    click_on "Increase quantity"
+    click_on "+"
 
     expect(current_path).to eq('/cart')
     expect(page).to have_content(@item.title)
