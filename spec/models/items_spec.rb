@@ -60,6 +60,20 @@ describe Item do
 				image: one_url )
 				expect(item_one).to be_valid
 			end
+			it 'condition is active if not specified' do
+				category = Category.create(title: "Animals")
+				one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
+				item_one = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00,
+				image: one_url )
+				expect(item_one.condition).to eq('active')
+			end
+			it 'condition can be set to retired' do
+				category = Category.create(title: "Animals")
+				one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
+				item_one = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00,
+				image: one_url, condition: 'retired' )
+				expect(item_one.condition).to eq('retired')
+			end
 		end
 	end
 	describe "relationships" do
