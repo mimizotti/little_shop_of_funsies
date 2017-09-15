@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   post '/login', :to => 'sessions#create'
   delete '/logout', :to => 'sessions#destroy'
 
+  namespace :admin do
+    resources :dashboards, only: [:index]
+  end
+
   resources :users, only: [:new, :create]
-  
-  resources :orders, only: [:index, :show]
+
+  resources :orders, only: [:index, :new, :show]
 
   resources :dashboard, only: [:index]
 
@@ -21,6 +25,7 @@ Rails.application.routes.draw do
   patch '/cart', :to => 'carts#update'
 
   delete '/cart', :to => 'carts#destroy'
+  resources :carts, only: [:index, :create, :destroy]
 
   get '/:category', to: 'categories#show', param: :slug, as: "category"
 

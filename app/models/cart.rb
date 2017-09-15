@@ -39,4 +39,8 @@ class Cart
     contents.delete(id)
   end
 
+  def destroy
+    @contents.clear
+  end
+
 end

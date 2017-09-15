@@ -13,16 +13,19 @@
     <p><%= link_to "Remove", cart_path(id: item.id), method: :delete %></p>
     <p>Subtotal: $<%= quantity * item.price %></p>
   </div>
-  <div class="total">
-    <% sum = 0 %>
-    <p>Total: $<%= sum += (item.price * quantity) %></p>
-  </div>
 <% end %>
-<div>
-  <% if current_user %>
-  <%= link_to "Checkout", dashboard_index_path %>
+<div class="total">
+  <% sum = 0 %>
+  <% @items.each do |item, quantity| %>
+    <% sum += (item.price * quantity) %>
+  <% end %>
+  <p><b>Total: $<%= sum %></b></p>
+</div>
+<div class="checkout">
+    <% if current_user %>
+    <%= link_to "Checkout", new_order_path(current_user) %>
   <% else %>
-  <%= link_to "Login", login_path %> <br />
-  <%= link_to "Create new account", new_user_path %>
+    <%= link_to "Login", login_path %> <br />
+    <%= link_to "Create new account", new_user_path %>
   <% end %>
 </div>
