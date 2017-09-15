@@ -29,8 +29,6 @@ RSpec.feature "User can place an order" do
     click_on "Checkout"
 
     expect(current_path).to eq('/orders')
-    save_and_open_page
     expect(page).to have_content("Order was successfully placed")
-    expect(page).to have_content(@item.title)
   end
 end
