@@ -4,4 +4,6 @@ class Item < ApplicationRecord
 	has_many :orders, through: :order_items
 	validates :title      , :image, presence: true, uniqueness: true
 	validates :description, :price, presence: true
+	
+	enum condition: ["active", "retired"]
 end

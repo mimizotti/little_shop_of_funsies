@@ -44,10 +44,12 @@ end
 
 feature "as an Admin" do
   describe "when I log into my account" do
+
     it "I am redirected to the Admin Dashboard" do
       admin = User.create(first_name: "Admin", last_name:"McAdmin", email: "admin@email", password: "boom", role: "admin")
 
       visit login_path
+
 
       fill_in "session[email]", with: admin.email
       fill_in "session[password]", with: admin.password
@@ -56,7 +58,9 @@ feature "as an Admin" do
       end
       
       expect(page).to have_content("Admin Dashboard")
+
       expect(current_path).to eq(admin_dashboards_path)
+
     end
   end
 end
