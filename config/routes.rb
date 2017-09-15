@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create]
-  
-  resources :orders, only: [:index, :show]
+
+  resources :orders, only: [:index, :new, :show]
 
   resources :dashboard, only: [:index]
 

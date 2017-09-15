@@ -1,0 +1,62 @@
+.topnav {
+    background-color: #990000;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.nextnav {
+		overflow: hidden;
+    background-color: #4d4d4d;
+}
+
+/* Style the links inside the navigation bar */
+.mynextnav a {
+		margin-top: 10px;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.login{
+	float: right
+}
+.white{
+	color: white;
+}
+a{
+	padding-right: 10px;
+	color: white;
+}
+.big-image{
+	display: inline;
+	width: 70%;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.right-images{
+	display: inline;
+	float:right;
+	width: 20%;
+	
+}
+.column-left{
+	width: 70%;
+}
+.column-right{
+	width: 30%
+}
+.right{
+	float: right;
+}
