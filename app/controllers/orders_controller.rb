@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 		order = Order.create(status: "ordered", user_id: current_user.id)
 		item_hash = @cart.item_and_quantity
 		order.add(item_hash)
+		@cart.destroy
 		flash[:success] = "Order was successfully placed"
 		redirect_to orders_path
 	end

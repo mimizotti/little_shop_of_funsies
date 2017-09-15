@@ -1,22 +1,43 @@
-<!DOCTYPE html>
-	<head>
-		<meta charset="utf-8">
-		<title><%= @user.first_name %>'s Orders</title>
-	</head>
-	<body>
+<!-- <div class="container">
+	<div class="row">
 		<h4>Orders:</h4>
-		<div>
-			<% @user.orders.each do |order| %>
+		<% @user.orders.each do |order| %>
+		<ul>
+			<ui>Total Price: $<%= order.total_price %></ui>
+			<ui><%= link_to order.created_at, order_path(order) %></ui>
 			<ul>
-				<ui>Total Price: $<%= order.total_price %></ui>
-				<ui><%= link_to order.created_at, order_path(order) %></ui>
-				<ul>
-					<% order.items.each do |item| %>
-					<ui> <%= item.title %>: $<%= item.price %></ui>
-					<% end %>
-				</ul>
+				<% order.items.each do |item| %>
+				<ui> <%= item.title %>: $<%= item.price %></ui>
+				<% end %>
 			</ul>
+		</ul>
+		<% end %>
+	</div>
+</div> -->
+
+<div class="container">
+	<center>
+	<div class="col-10">
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th>Order #</th>
+	      <th>Order Placed</th>
+	      <th>Order Status</th>
+	      <th>Total</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+			<% @user.orders.each do |order| %>
+	    <tr>
+	      <th scope="row"> <%= link_to order.id, order_path(order) %></th>
+	      <td><%= order.date %></td>
+	      <td><%= order.status.capitalize %></td>
+	      <td>$<%= order.total_price %></td>
+	    </tr>
 			<% end %>
-		</div>
-		
-	</body>
+	  </tbody>
+	</table>
+</div>
+</center>
+</div>

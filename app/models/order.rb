@@ -17,4 +17,8 @@ class Order < ApplicationRecord
       order_item.quantity = quantity
     end
   end
+
+  def date
+    created_at.strftime('%b. %d, %Y')
+  end
 end
