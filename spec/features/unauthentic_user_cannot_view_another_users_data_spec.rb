@@ -27,5 +27,10 @@ RSpec.feature "Unauthenticated users security" do
 
       expect(current_path).to eq(login_path)
     end
+    it "I cannot view the administrator screens or use administrator functionality" do
+      visit admin_dashboard_index_path
+
+      expect(page).to have_content("404")
+    end
   end
 end
