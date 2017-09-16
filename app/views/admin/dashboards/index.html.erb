@@ -1,1 +1,5 @@
-<h3>Admin Dashboard</h3>
+<h3> Admin Dashboard </h3>
+
+<p>The email associated with you account is <%= @admin.email %></p>
+
+<%= link_to "Update your account", edit_user_path(@admin) %>

@@ -11,9 +11,17 @@ class UsersController < ApplicationController
     redirect_to dashboard_index_path
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+  end
+
   def show
     @user = User.find(params[:id])
   end
+
 
   private
 
