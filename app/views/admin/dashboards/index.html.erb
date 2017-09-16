@@ -1,5 +1,6 @@
 <h3> Admin Dashboard </h3>
 
 <p>The email associated with you account is <%= @admin.email %></p>
+<p><%= link_to "All Items", admin_items_path %> </p>
 
 <%= link_to "Update your account", edit_user_path(@admin) %>
