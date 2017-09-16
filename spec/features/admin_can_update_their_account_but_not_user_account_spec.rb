@@ -28,10 +28,8 @@ describe "As a logged in Admin" do
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)
 
     visit dashboard_index_path(user)
-  
 
-    click_on "Update your account"
+    expect(page).not_to have_content("Update your account")
 
-    expect(page).to have_content("404")
   end
 end
