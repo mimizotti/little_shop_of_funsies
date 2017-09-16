@@ -13,7 +13,7 @@ class Cart
     contents[id.to_s] = (contents[id.to_s] || 0) + 1
   end
 
-  def item_quantity(id, condition)
+  def change_quantity(id, condition)
     if condition == "decrease"
       if contents[id.to_s] > 0
         contents[id.to_s] -=1
