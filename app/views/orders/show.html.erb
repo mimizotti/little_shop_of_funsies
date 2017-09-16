@@ -1,10 +1,13 @@
 <h4>Order:</h4>
 <ul>
 	<ui>Total Price: $<%= @order.total_price %></ui>
-	<ui><%= @order.created_at %></ui>
+	<ui>Order Date: <%= @order.date %></ui>
+	<ui>Order Placed by: <%= @order.user.first_name + " " + @order.user.last_name %></ui>
+	<ui>Order Address: <%= @order.address %></ui>
 	<ul>
 		<% @order.items.each do |item| %>
-		<ui> <%= item.title %>: $<%= item.price %></ui>
+		<ui> <%= link_to "#{item.title}", item_path(item) %>: $<%= item.price %></ui> <br>
+		<ui> Subtotal: $<%= item.price * item.order_items.first.quantity %>  </ui> <br>
 		<% end %>
 	</ul>
 </ul>
