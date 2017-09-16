@@ -3,18 +3,7 @@ require 'rails_helper'
 RSpec.feature "Authenticated users security" do
   context "As a user" do
     before(:each) do
-      twelve_items
-      @user_1 = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi")
-      @user_2 = User.create(first_name: "Jake", last_name: "the Dog", email: "jake@adventuretime.com", password: "dog")
-
-      @order = Order.create(status: "ordered", user_id: @user_1.id)
-
-      items_hash = {
-                      @unicorn_onesie_1 => 1,
-                      @squirrel_onesie_1 => 2
-                   }
-
-      @order.add(items_hash)
+      setup
 
       visit root_path
 

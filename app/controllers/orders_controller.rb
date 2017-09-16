@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+	before_action :require_current_user
+
 	def index
 		@user = current_user
 		@user.orders.preload(:items)
@@ -6,9 +8,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		if current_user.nil?
-			redirect_to login_path
-		elsif current_user.id != @order.user_id
+		if current_user.id != @order.user_id
 			redirect_to dashboard_index_path
 		end
 	end
@@ -21,5 +21,10 @@ class OrdersController < ApplicationController
 		flash[:success] = "Order was successfully placed"
 		redirect_to orders_path
 	end
+
+	private
+		def require_current_user
+			redirect_to login_path unless current_user
+		end
 
 end

@@ -11,6 +11,7 @@
 		<p>Description: <%= @item.description %></p>
 		<p>Price:$ <%= @item.price %></p>
 		<img src=<%=@item.image%>>
+		<%= link_to "Add to cart", carts_path(item_id: @item.id), method: :post, class: "badge badge-primary" %></center>
 	</div>
 
 </body>

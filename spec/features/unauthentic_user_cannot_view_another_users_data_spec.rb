@@ -14,5 +14,18 @@ RSpec.feature "Unauthenticated users security" do
 
       expect(current_path).to eq(login_path)
     end
+    it "I should be redirected to login/create account when I try to check out" do
+      visit item_path(@unicorn_onesie_1)
+
+      click_on "Add to cart"
+
+      click_on "Cart"
+
+      expect(page).to_not have_content("Checkout")
+
+      visit new_order_path
+
+      expect(current_path).to eq(login_path)
+    end
   end
 end
