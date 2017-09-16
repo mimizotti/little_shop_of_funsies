@@ -13,16 +13,6 @@ class Cart
     contents[id.to_s] = (contents[id.to_s] || 0) + 1
   end
 
-  # def change_quantity(id, condition)
-  #   if condition == "decrease"
-  #     if contents[id.to_s] > 0
-  #       contents[id.to_s] -=1
-  #     end
-  #   elsif condition == "increase"
-  #     contents[id.to_s] += 1
-  #   end
-  # end
-
   def decrease_quantity(id)
     if contents[id.to_s] > 0
       contents[id.to_s] -=1
@@ -31,7 +21,7 @@ class Cart
     end
   end
 
-  def increase_quanity(id)
+  def increase_quantity(id)
     contents[id] += 1
   end
 
