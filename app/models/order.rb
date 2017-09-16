@@ -26,4 +26,8 @@ class Order < ApplicationRecord
     group(:status).count
   end
 
+  def self.filter_by_status(status)
+    where(status: status)
+  end
+
 end

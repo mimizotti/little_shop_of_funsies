@@ -1,11 +1,50 @@
-<h3>Admin Dashboard</h3>
+<div class="container">
+	<center>
+      <h2>Admin Dashboard</h2>
+	   <div class="col-10">
+	      <table class="table table-hover">
+	         <thead>
+	            <tr class="bg-danger">
+        	      <th>Order #</th>
+        	      <th>Order Placed</th>
+        	      <th>Order Status</th>
+	            </tr>
+	          </thead>
+            <tbody>
+              <% @orders.each do |order| %>
+                <tr>
+                  <th scope="row">
+                    <%= link_to order.id, order_path(order) %>
+                  </th>
+                  <td><%= order.date %></td>
+                  <td><%= order.status %></td>
+                </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </center>
+</div>
 
-<% @orders.each do |order| %>
-  <%= link_to order.id, order_path(order) %>
-  <%= order.date %>
-  <%= order.status %>
-<% end %>
-
-<% Order.count_by_status.each do |status, count| %>
-  <%= status.capitalize %>: <%= count %>
-<% end %>
+<div class="container">
+	<center>
+	   <div class="col-10">
+	     <table class="table table-hover">
+	        <thead>
+	           <tr class="bg-danger" >
+              <th> Status </th>
+              <th> Count </th>
+              </tr>
+          </thead>
+          <tbody>
+              <% Order.count_by_status.each do |status, count| %>
+              <tr>
+              <th <th scope="row"> <%= link_to status.capitalize, admin_dashboard_index_path(status: status) %></th>
+              <td><%= status.capitalize %>: <%= count %></td>
+              </tr>
+              <% end %>
+          </tbody>
+      </table>
+    </div>
+  </center>
+</div>
