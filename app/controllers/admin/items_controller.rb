@@ -3,6 +3,9 @@ before_action :require_admin
   def index
     @items = Item.all
   end
+	
+	def edit
+	end
 
 private
   def require_admin
