@@ -1,6 +1,7 @@
 class Admin::DashboardController < ApplicationController
 before_action :require_admin
   def index
+    @orders = Order.all
   end
 
 private

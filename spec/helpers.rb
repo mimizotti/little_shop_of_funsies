@@ -106,4 +106,34 @@ module Helpers
 
     @order.add(items_hash)
   end
+  def more_orders
+    setup
+
+    @order_2 = Order.create(status: "paid", user_id: @user_1.id)
+
+    items_hash = {
+                    @zebra_onesie_1 => 1,
+                    @sloth_onesie_1 => 1
+                  }
+
+    @order_2.add(items_hash)
+
+    @order_3 = Order.create(status: "cancelled", user_id: @user_2.id)
+
+    items_hash = {
+                    @penguin_onesie_1 => 3,
+                    @pokemon_onesie_1 => 1
+                  }
+
+    @order_3.add(items_hash)
+
+    @order_4 = Order.create(status: "completed", user_id: @user_2.id)
+
+    items_hash = {
+                    @cat_onesie_2 => 4,
+                    @giraffe_onesie_1 => 3
+                  }
+
+    @order_4.add(items_hash)
+  end
 end

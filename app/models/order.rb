@@ -21,4 +21,9 @@ class Order < ApplicationRecord
   def date
     created_at.strftime('%b. %d, %Y')
   end
+
+  def self.count_by_status
+    group(:status).count
+  end
+
 end

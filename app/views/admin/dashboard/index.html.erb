@@ -1,1 +1,11 @@
 <h3>Admin Dashboard</h3>
+
+<% @orders.each do |order| %>
+  <%= link_to order.id, order_path(order) %>
+  <%= order.date %>
+  <%= order.status %>
+<% end %>
+
+<% Order.count_by_status.each do |status, count| %>
+  <%= status.capitalize %>: <%= count %>
+<% end %>
