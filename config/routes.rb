@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :dashboards, only: [:index]
   end
 
-  resources :users, only: [:new, :create]
+  resources :users , only: [:new, :create, :edit, :update]
 
   resources :orders, only: [:index, :new, :show]
 

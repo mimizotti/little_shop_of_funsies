@@ -1,6 +1,8 @@
 class Admin::DashboardsController < ApplicationController
 before_action :require_admin
   def index
+  
+    @admin = User.find(current_user.id)
   end
 
 private
