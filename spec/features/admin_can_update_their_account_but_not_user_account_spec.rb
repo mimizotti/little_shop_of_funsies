@@ -38,10 +38,4 @@ describe "As a logged in Admin" do
       visit admin_dashboards_path
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
-
-    it "A visitor sees a 404 when they try to visit the user dashboard" do
-        user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
-
-        expect(page).to have_content("The page you were looking for doesn't exist.")
-        end
-    end
+  end
