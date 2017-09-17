@@ -45,9 +45,36 @@ RSpec.feature "Admin Orders" do
       end
 
       expect(current_path).to eq(admin_dashboard_index_path)
+
       within(".order-2") do
         expect(page).to have_content("Cancelled")
       end
+
+      within(".order-1") do
+        click_on("Mark as Paid")
+      end
+
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      within(".order-1") do
+        within(".status") do
+          expect(page).to have_content("Paid")
+        end
+      end
+
+      within(".order-1") do
+        click_on("Mark as Completed")
+      end
+
+      expect(current_path).to eq(admin_dashboard_index_path)
+
+      within(".order-1") do
+        within(".status") do
+          expect(page).to have_content("Completed")
+        end
+      end
+      save_and_open_page
+
     end
   end
 end
