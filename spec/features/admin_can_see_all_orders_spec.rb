@@ -73,7 +73,6 @@ RSpec.feature "Admin Orders" do
           expect(page).to have_content("Completed")
         end
       end
-      save_and_open_page
 
     end
   end
