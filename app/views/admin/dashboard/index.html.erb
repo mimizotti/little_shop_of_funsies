@@ -18,11 +18,11 @@
                   </th>
                   <td><%= order.date %></td>
                   <td class="status"><%= order.status.capitalize %></td>
-                  <td><%= link_to "Cancel", order_path(order, status: "cancelled"), method: :put if order.status == "paid" || order.status == "ordered" %></td>
+                  <td><%= link_to "Cancel", order_path(order, status: "cancelled"), method: :put, class: "badge badge-warning" if order.status == "paid" || order.status == "ordered" %></td>
                   <% if order.status == "ordered" %>
-                    <td><%= link_to "Mark as Paid", order_path(order, status: "paid"), method: :put %></td>
+                    <td><%= link_to "Mark as Paid", order_path(order, status: "paid"), method: :put, class: "badge badge-success" %></td>
                   <% elsif order.status == "paid" %>
-                    <td><%= link_to "Mark as Completed", order_path(order, status: "completed"), method: :put %></td>
+                    <td><%= link_to "Mark as Completed", order_path(order, status: "completed"), method: :put, class: "badge badge-success" %></td>
                   <% end %>
                 </tr>
             <% end %>
