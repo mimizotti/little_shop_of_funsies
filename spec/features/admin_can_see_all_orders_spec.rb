@@ -17,7 +17,7 @@ RSpec.feature "Admin Orders" do
       orders.each do |order|
         expect(page).to have_content(order.id)
         expect(page).to have_content(order.date)
-        expect(page).to have_content(order.status)
+        expect(page).to have_content(order.status.capitalize)
       end
 
       expect(page).to have_content("Ordered: 1")
@@ -45,8 +45,9 @@ RSpec.feature "Admin Orders" do
       end
 
       expect(current_path).to eq(admin_dashboard_index_path)
-      binding.pry
-      expect(@order_2.status).to eq("Cancelled")
+      within(".order-2") do
+        expect(page).to have_content("Cancelled")
+      end
     end
   end
 end

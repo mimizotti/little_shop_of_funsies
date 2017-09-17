@@ -15,7 +15,8 @@ class OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
-		@order.update_status(params[:status])
+		@order.update(status: params[:status])
+		@order.save
 		redirect_back(fallback_location: root_path)
 	end
 
