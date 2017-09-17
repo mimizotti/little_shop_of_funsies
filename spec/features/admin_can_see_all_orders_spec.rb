@@ -25,7 +25,7 @@ RSpec.feature "Admin Orders" do
       expect(page).to have_content("Cancelled: 1")
       expect(page).to have_content("Completed: 1")
     end
-    it "Admin can see orders filtered by status" do
+    it "I can see orders filtered by status" do
 
       visit admin_dashboard_index_path
 
@@ -36,9 +36,17 @@ RSpec.feature "Admin Orders" do
       expect(page).not_to have_link(@order_2.id)
       expect(page).not_to have_link(@order_3.id)
       expect(page).not_to have_link(@order_4.id)
+    end
+    it "I can change the status of orders" do
+      visit admin_dashboard_index_path
 
+      within(".order-2") do
+        click_on("Cancel")
+      end
 
-
+      expect(current_path).to eq(admin_dashboard_index_path)
+      binding.pry
+      expect(@order_2.status).to eq("Cancelled")
     end
   end
 end

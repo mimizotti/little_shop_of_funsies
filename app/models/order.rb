@@ -30,4 +30,8 @@ class Order < ApplicationRecord
     where(status: status)
   end
 
+  def update_status(param)
+    status = param
+  end
+
 end

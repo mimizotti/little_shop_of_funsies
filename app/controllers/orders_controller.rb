@@ -13,6 +13,13 @@ class OrdersController < ApplicationController
 		end
 	end
 
+	def update
+		@order = Order.find(params[:id])
+		@order.update_status(params[:status])
+		redirect_back(fallback_location: root_path)
+	end
+
+
 	def new
 		order = Order.create(status: "ordered", user_id: current_user.id)
 		item_hash = @cart.item_and_quantity
