@@ -19,9 +19,11 @@ class UsersController < ApplicationController
     if current_admin?
       current_user.update(user_params)
       redirect_to admin_dashboards_path
-    else
+    elsif current_user != nil
       current_user.update(user_params)
       redirect_to dashboard_index_path
+    else
+      render file: "/public/404"
     end
   end
 
