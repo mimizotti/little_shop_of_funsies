@@ -5,15 +5,14 @@
 </head>
 <body>
 	<div class = "container">
-	<h4><%= link_to "Shop", items_path %></h4>
+	<h4><%= button_to "Continue shopping", items_path %></h4>
 		<div class="row text-center">
 			<div class='col-6'>
 				<%= image_tag @item.image %>
-			</div>
+				</div>
 			<div class='col-6 card bg-info'>
 				<div class='card-body '>
-
-				<h1><strong><%= @item.title %></strong></h1> <br />
+				<h2><strong><%= @item.title %></strong></h2> <br />
 				<%= @item.description %> <br /> <br />
 				Price:$ <%= @item.price %> <br />
 				<% unless @item.retired? %>
@@ -23,7 +22,6 @@
 					Retired
 				</div>
 				<% end %>
-
 				</div>
 			</div>
 		</div>
