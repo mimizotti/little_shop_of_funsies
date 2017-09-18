@@ -1,38 +1,84 @@
-<h1>Cart</h1>
+<style>
+    .cart_image{
+      width: 3em;
+      height: 4em;
+    }
 
-<% @items.each do |item, quantity| %>
-  <div class="item-#{item.id}">
-    <!-- <img src=<%=item.image%> alt="Onesie" height="250" width="250"> -->
-    <%= image_tag item.image %>
-    <p><strong><%= link_to item.title, item_path(item) %></strong></p>
-    <p>Description: <%= item.description %></p>
-    <p>Price: $<%= item.price %></p>
-    <p>Quantity: <%= quantity %></p>
-    <p><%= link_to "-", cart_path(id: item.id, condition: "decrease"), action: :update, method: :patch, class: "badge badge-success" %></p>
-    <p><%= link_to "+", cart_path(id: item.id, condition: "increase"), action: :update, method: :patch, class: "badge badge-danger" %></p>
-    <p><%= link_to "Remove", cart_path(id: item.id), method: :delete %></p>
-    <p>Subtotal: $<%= quantity * item.price %></p>
-  </div>
+      .checkout{
+        text-align: right;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .total{
+        text-align: right;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+    h2{
+      text-align: center;
+      font-size: 3em;
+    }
+</style>
+<% if current_user  %>
+<h2> <%= current_user.first_name %>'s  Cart</h2>
+<% else %>
+<h2> Your Cart </h2>
 <% end %>
-<div class="total">
-  <% sum = 0 %>
-  <% @items.each do |item, quantity| %>
-    <% sum += (item.price * quantity) %>
-  <% end %>
-  <p><b>Total: $<%= sum %></b></p>
-</div>
-<div class="checkout">
-    <% if current_user %>
-      <%= form_tag do |t| %>
+<div class="container">
+	<center>
+	<div class="col-10">
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+        <th>Image</th>
+	      <th>Price</th>
+        <th>Quantity</th>
+        <th>Change Quantity</th>
+        <th></th>
+        <th>Subtotal</th>
+	    </tr>
+      <tbody>
 
-      <%= label_tag :address %>
-      <%= collection_select :user, :addresses, Address.where(user_id: current_user.id), :id, :street %>
-
-      <%= submit_tag("Checkout") %>
+    <% @items.each do |item, quantity| %>
+      <div class="item-#{item.id}">
+        <tr>
+        <th scope="row"><strong><%= link_to item.title, item_path(item) %></strong></th>
+        <td><%= image_tag item.image, :class => "cart_image"%></td>
+        <td>$<%= item.price %></td>
+        <td><%= quantity %></td>
+        <td><%= link_to "-", cart_path(id: item.id, condition: "decrease"), action: :update, method: :patch, class: "badge badge-danger" %>
+        <%= link_to "+", cart_path(id: item.id, condition: "increase"), action: :update, method: :patch, class: "badge badge-success" %></td>
+        <td><%= link_to "Remove", cart_path(id: item.id), method: :delete %></td>
+        <td>$<%= quantity * item.price %></td>
+      </tr>
+      </div>
       <% end %>
-      
-  <% else %>
-    <%= link_to "Login", login_path %> <br />
-    <%= link_to "Create new account", new_user_path %>
-  <% end %>
+    </tbody>
+    </table>
+    <div class="total">
+      <% sum = 0 %>
+      <% @items.each do |item, quantity| %>
+      <% sum += (item.price * quantity) %>
+      <% end %>
+      <p><b>Total: $<%= sum %></b></p>
+    </div>
+    <div class="checkout">
+      <% if current_user %>
+        <%= form_tag do |t| %>
+
+        <%= label_tag :address %>
+        <%= collection_select :user, :addresses, Address.where(user_id: current_user.id), :id, :street %>
+
+        <%= submit_tag("Checkout") %>
+      <% end %>
+      <% else %>
+      <%= link_to "Login", login_path %> <br />
+      <%= link_to "Create new account", new_user_path %>
+      <% end %>
+    </div>
+  </div>
+</center>
 </div>
