@@ -3,6 +3,6 @@ class Address < ApplicationRecord
   validates :street, :city, :state, :zip, presence: true
 
   def complete_address
-    street + ", " + city + ", " + state + ", " + zip
+    street + ", " + city + ", " + state + zip
   end
 end

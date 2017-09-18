@@ -2,7 +2,7 @@
 <ul>
 	<ui>Total Price: $<%= @order.total_price %></ui>
 	<ui>Order Date: <%= @order.date %></ui>
-	<ui>Order Placed by: <%= @order.user.first_name + " " + @order.user.last_name %></ui>
+	<ui>Order Placed by: <%= @order.user.full_name %></ui>
 	<ui>Order Address: <%= @order.address %></ui>
 	<ul>
 		<% @order.items.each do |item| %>
