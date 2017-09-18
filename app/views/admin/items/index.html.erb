@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <div class="container">
+	<%= link_to "Create New Item", new_admin_item_path %>
 	<div class="row">
 		<% @items.each do |item| %>
 		<div class="center-block">
