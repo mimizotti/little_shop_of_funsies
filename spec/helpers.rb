@@ -17,10 +17,6 @@ module Helpers
 		image: @two_url )
   end
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6705bd537c78755aa7caeec304138be001958715
   def create_orders
 
     user1 = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")

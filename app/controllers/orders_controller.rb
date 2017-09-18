@@ -22,8 +22,7 @@ class OrdersController < ApplicationController
 
 
 	def new
-		address = Address.find(params[:user][:addresses])
-		order = Order.create(status: "ordered", user_id: current_user.id, address: address.complete_address)
+		order = Order.create(status: "ordered", user_id: current_user.id)
 		item_hash = @cart.item_and_quantity
 		order.add(item_hash)
 		@cart.destroy
