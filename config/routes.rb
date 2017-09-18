@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:index, :create, :destroy]
 
+  post '/cart', :to => 'orders#new'
+
   patch '/cart', :to => 'carts#update'
 
   delete '/cart', :to => 'carts#destroy'
