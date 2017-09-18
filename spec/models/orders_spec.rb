@@ -5,14 +5,20 @@ RSpec.describe Order do
 		describe 'invalid attributes' do
       it 'is invalid without a status' do
         user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
-        user.orders.create
+        user.orders.create(address: "test adress, cityville")
         expect(user.orders.first).to be_invalid
       end
+
+			it 'is invalid without an address' do
+				user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+        user.orders.create(status: "ordered")
+        expect(user.orders.first).to be_invalid
+			end
     end
     describe 'valid attributes' do
-      it 'is valid with a status' do
+      it 'is valid with a status and address' do
         user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
-        user.orders.create(status: "ordered")
+        user.orders.create(status: "ordered", address: "test address, cityville")
         expect(user.orders.first).to be_valid
       end
     end
