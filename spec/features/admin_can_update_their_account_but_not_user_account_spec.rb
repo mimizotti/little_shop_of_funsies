@@ -7,7 +7,8 @@ describe "As a logged in Admin" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)
 
-    visit admin_dashboards_path
+    visit admin_dashboard_index_path
+    save_and_open_page
 
     click_on "Update your account"
 
