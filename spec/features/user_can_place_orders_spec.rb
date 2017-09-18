@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.feature "User can place an order" do
   it "and see the message 'order was successfully placed'" do
 
-    user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
-    address = user.addresses.create(street: "123 test", city: "testville", state: "TE", zip: "00000")
+    user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "dummy address")
 
     create_items
 
@@ -26,8 +25,9 @@ RSpec.feature "User can place an order" do
     end
 
     click_on "Cart"
+    
+    expect(page).to have_content("Checkout")
 
-    select address.street, from: "user[addresses]"
     click_on "Checkout"
 
     expect(current_path).to eq('/orders')

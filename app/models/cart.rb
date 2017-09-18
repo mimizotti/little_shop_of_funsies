@@ -16,7 +16,8 @@ class Cart
   def decrease_quantity(id)
     if contents[id.to_s] > 0
       contents[id.to_s] -=1
-    else
+    end
+    if contents[id.to_s] == 0
       delete_item(id)
     end
   end
@@ -38,7 +39,7 @@ class Cart
   end
 
   def delete_item(id)
-    contents.delete(id)
+    contents.delete(id.to_s)
   end
 
   def destroy
