@@ -72,5 +72,19 @@
     </div>
   </div>
 </div>
-</center>
+<div class="checkout">
+  <% if current_user %>
+  <%= form_tag do |t| %>
+
+  <%= label_tag :address %>
+  <%= collection_select :user, :addresses, Address.where(user_id: current_user.id), :id, :street %>
+
+  <%= submit_tag("Checkout") %>
+  <% end %>
+
+  <% else %>
+  <%= link_to "Login", login_path %> <br />
+  <%= link_to "Create new account", new_user_path %>
+  <% end %>
 </div>
+</center>
