@@ -6,6 +6,7 @@ before_action :require_admin
     else
       @orders = Order.all
     end
+    flash[:notice] = "You're logged in as an Administrator."
   end
 
 private
