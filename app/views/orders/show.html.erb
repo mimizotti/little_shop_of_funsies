@@ -3,7 +3,7 @@
 	<ui>Total Price: $<%= @order.total_price %></ui>
 	<ui>Order Date: <%= @order.date %></ui>
 	<ui>Order Placed by: <%= @order.user.full_name %></ui>
-	<ui>Order Address: <%= @order.address %></ui>
+	<ui>Order Address: <%= @order.user.address %></ui>
 	<ul>
 		<% @order.items.each do |item| %>
 		<ui> <%= link_to "#{item.title}", item_path(item) %>: $<%= item.price %></ui> <br>
