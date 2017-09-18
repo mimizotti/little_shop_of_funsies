@@ -1,20 +1,48 @@
-<h1>Cart</h1>
+<h2>Cart</h2>
+<style>
+    .cart_image{
+      width: 3em;
+      height: 4em;
+    }
+</style>
+<div class="container">
+	<center>
+	<div class="col-10">
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th>Item Name</th>
+        <th>Item Image</th>
+	      <th>Item Price</th>
+        <th>Item Quantity</th>
+        <th>Decrease</th>
+        <th>Increase</th>
+        <th>Subtotal</th>
+        <th></th>
+	    </tr>
+      <tbody>
 
-<% @items.each do |item, quantity| %>
-  <div class="item-#{item.id}">
-    <!-- <img src=<%=item.image%> alt="Onesie" height="250" width="250"> -->
-    <%= image_tag item.image %>
-    <p><strong><%= link_to item.title, item_path(item) %></strong></p>
-    <p>Description: <%= item.description %></p>
-    <p>Price: $<%= item.price %></p>
-    <p>Quantity: <%= quantity %></p>
-    <p><%= link_to "-", cart_path(id: item.id, condition: "decrease"), action: :update, method: :patch, class: "badge badge-success" %></p>
-    <p><%= link_to "+", cart_path(id: item.id, condition: "increase"), action: :update, method: :patch, class: "badge badge-danger" %></p>
-    <p><%= link_to "Remove", cart_path(id: item.id), method: :delete %></p>
-    <p>Subtotal: $<%= quantity * item.price %></p>
+    <% @items.each do |item, quantity| %>
+      <div class="item-#{item.id}">
+        <tr>
+        <th scope="row"><strong><%= link_to item.title, item_path(item) %></strong></th>
+        <td><%= image_tag item.image, :class => "cart_image"%></td>
+        <td>Price: $<%= item.price %></td>
+        <td>Quantity: <%= quantity %></td>
+        <td><%= link_to "-", cart_path(id: item.id, condition: "decrease"), action: :update, method: :patch, class: "badge badge-danger" %></td>
+        <td><%= link_to "+", cart_path(id: item.id, condition: "increase"), action: :update, method: :patch, class: "badge badge-success" %></td>
+        <td>Subtotal: $<%= quantity * item.price %></td>
+        <td><%= link_to "Remove", cart_path(id: item.id), method: :delete %></td>
+      </tr>
+      </div>
+      <% end %>
+    </tbody>
+    </table>
   </div>
-<% end %>
-<div class="total">
+</div>
+</center>
+</div>
+    <div class="total">
   <% sum = 0 %>
   <% @items.each do |item, quantity| %>
     <% sum += (item.price * quantity) %>
