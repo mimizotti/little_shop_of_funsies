@@ -8,7 +8,6 @@ describe "As a logged in Admin" do
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)
 
     visit admin_dashboard_index_path
-    save_and_open_page
 
     click_on "Update your account"
 
@@ -36,7 +35,7 @@ describe "As a logged in Admin" do
 
     it "A visitor sees a 404 when they try to visit the admin dashboard" do
       admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", role: "admin")
-      visit admin_dashboards_path
+      visit admin_dashboard_index_path
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
   end
