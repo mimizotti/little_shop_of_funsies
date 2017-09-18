@@ -17,7 +17,7 @@ RSpec.describe "As a visitor" do
 			visit '/carts'
 
 			expect(page).to have_content("Black Cat Onesie")
-			expect(page).to have_content("Quantity: 1")
+			expect(page).to have_content("1")
 
 		end
 	end
