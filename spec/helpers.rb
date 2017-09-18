@@ -16,6 +16,29 @@ module Helpers
 		@item_two = @category.items.create(title: "Funsie Twosie", description: "too awesome", price: 12.00,
 		image: @two_url )
   end
-  
-  
+
+
+  def create_orders
+
+    user1 = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
+
+    order_1 = user1.orders.create(status: "ordered")
+    order_1 << @item_one
+    order_1 << @item_two
+
+    user2 = User.create(first_name: "SoTesty", last_name: "DeTest", email:"test@testmail.com", password: "testing")
+
+    order_2 = user2.orders.create(status: "compeleted")
+    order_2 << @item_one
+
+    order_3 = user2.orders.create(status: "compeleted")
+    order_3 << @item_one
+    order_3 << @item_two
+
+    user3 = User.create(first_name: "BestTest", last_name: "ReTest", email:"testing@testmail.com", password: "testing")
+
+    order_4 = user3.orders.create(status: "compeleted")
+    order_4 << @item_one
+  end
+
 end
