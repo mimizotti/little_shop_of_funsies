@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{@user.first_name} #{@user.last_name}"
       if @user.role == "admin"
-        redirect_to admin_dashboards_path
+        redirect_to admin_dashboard_index_path
       elsif @user.role == "default"
       redirect_to dashboard_index_path
-      end 
+      end
     else
       flash[:failure] = "That login was unsuccessful"
       redirect_to login_path
