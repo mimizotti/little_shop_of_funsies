@@ -1,6 +1,7 @@
 require "rails_helper"
 
 def setup
+  def create_orders
 
   admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", role: "admin")
 
@@ -12,6 +13,8 @@ describe "As an admin when I visit the dashboard" do
     it " that ranks our items by popularity" do
       it " I can see the total sales for each item" do
         it "I can see the total count sold for each item" do
+
+          visit admin_dashboard_index 
 
 
         end
@@ -28,4 +31,8 @@ describe "As an admin when I visit the dashboard" do
         end
       end
     end
+  end
+  end
+
+end
 end

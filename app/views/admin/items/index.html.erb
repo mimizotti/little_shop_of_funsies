@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<div class="container">
+	<div class="row">
+		<% @items.each do |item| %>
+		<div class="center-block">
+			<div class="card border-white" style="width: 15rem;">
+				<%= image_tag item.image, class: "card-img-top" %>
+				<div class="card-body">
+				<center><p><strong><%= link_to item.title, item_path(item) %></strong></p>
+				<!-- <p>Description: <%= item.description %></p> -->
+				<p>Price: $<%= item.price %></p>
+				<p><%= link_to "Edit", edit_admin_item_path(item) %></p>
+				<% unless item.retired? %>
+				<%= link_to "Add to cart", carts_path(item_id: item.id), method: :post, class: "badge badge-primary" %></center>
+				<% else %>
+				<div class="badge badge-secondary">
+					Retired
+				</div>
+				<% end %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+</body>
