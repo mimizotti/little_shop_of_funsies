@@ -97,7 +97,7 @@ module Helpers
     @user_1 = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi")
     @user_2 = User.create(first_name: "Jake", last_name: "the Dog", email: "jake@adventuretime.com", password: "dog")
 
-    @order = Order.create(status: "ordered", user_id: @user_1.id)
+    @order = @user_1.orders.create(status: "ordered")
 
     items_hash = {
                     @unicorn_onesie_1 => 1,
