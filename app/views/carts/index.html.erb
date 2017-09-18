@@ -4,6 +4,18 @@
       height: 4em;
     }
 
+      .checkout{
+        text-align: right;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .total{
+        text-align: right;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
     h2{
       text-align: center;
       font-family: 'Pacifico', cursive;
@@ -17,14 +29,13 @@
 	<table class="table table-hover">
 	  <thead>
 	    <tr>
-	      <th>Item Name</th>
-        <th>Item Image</th>
-	      <th>Item Price</th>
-        <th>Item Quantity</th>
-        <th>Decrease</th>
-        <th>Increase</th>
-        <th>Subtotal</th>
+	      <th>Name</th>
+        <th>Image</th>
+	      <th>Price</th>
+        <th>Quantity</th>
+        <th>Change Quantity</th>
         <th></th>
+        <th>Subtotal</th>
 	    </tr>
       <tbody>
 
@@ -33,33 +44,33 @@
         <tr>
         <th scope="row"><strong><%= link_to item.title, item_path(item) %></strong></th>
         <td><%= image_tag item.image, :class => "cart_image"%></td>
-        <td>Price: $<%= item.price %></td>
-        <td>Quantity: <%= quantity %></td>
-        <td><%= link_to "-", cart_path(id: item.id, condition: "decrease"), action: :update, method: :patch, class: "badge badge-danger" %></td>
-        <td><%= link_to "+", cart_path(id: item.id, condition: "increase"), action: :update, method: :patch, class: "badge badge-success" %></td>
-        <td>Subtotal: $<%= quantity * item.price %></td>
+        <td>$<%= item.price %></td>
+        <td><%= quantity %></td>
+        <td><%= link_to "-", cart_path(id: item.id, condition: "decrease"), action: :update, method: :patch, class: "badge badge-danger" %>
+        <%= link_to "+", cart_path(id: item.id, condition: "increase"), action: :update, method: :patch, class: "badge badge-success" %></td>
         <td><%= link_to "Remove", cart_path(id: item.id), method: :delete %></td>
+        <td>$<%= quantity * item.price %></td>
       </tr>
       </div>
       <% end %>
     </tbody>
     </table>
+    <div class="total">
+      <% sum = 0 %>
+      <% @items.each do |item, quantity| %>
+      <% sum += (item.price * quantity) %>
+      <% end %>
+      <p><b>Total: $<%= sum %></b></p>
+    </div>
+    <div class="checkout">
+      <% if current_user %>
+      <%= link_to "Checkout", new_order_path(current_user) %>
+      <% else %>
+      <%= link_to "Login", login_path %> <br />
+      <%= link_to "Create new account", new_user_path %>
+      <% end %>
+    </div>
   </div>
 </div>
 </center>
-</div>
-    <div class="total">
-  <% sum = 0 %>
-  <% @items.each do |item, quantity| %>
-    <% sum += (item.price * quantity) %>
-  <% end %>
-  <p><b>Total: $<%= sum %></b></p>
-</div>
-<div class="checkout">
-    <% if current_user %>
-    <%= link_to "Checkout", new_order_path(current_user) %>
-  <% else %>
-    <%= link_to "Login", login_path %> <br />
-    <%= link_to "Create new account", new_user_path %>
-  <% end %>
 </div>
