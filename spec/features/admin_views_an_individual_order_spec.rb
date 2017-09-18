@@ -9,7 +9,7 @@ feature "Admin can view individual order pages" do
 
   scenario "As an admin, when I visit an individual order page" do
     user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
-    order_1 = user.orders.create(status: "ordered", address: "123 Fake St.")
+    order_1 = user.orders.create(status: "ordered")
     OrderItem.create(order: order_1, item: @item_one, quantity: 1)
     OrderItem.create(order: order_1, item: @item_two, quantity: 2)
 
