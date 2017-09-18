@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<head>
-	<meta charset="utf-8">
-	<title>Shop</title>
-</head>
-<body>
 
 <div class="container">
 	<div class="row">
@@ -15,6 +10,7 @@
 				<center><p><strong><%= link_to item.title, item_path(item) %></strong></p>
 				<!-- <p>Description: <%= item.description %></p> -->
 				<p>Price: $<%= item.price %></p>
+				<p><%= link_to "Edit", edit_admin_item_path(item) %></p>
 				<% unless item.retired? %>
 				<%= link_to "Add to cart", carts_path(item_id: item.id), method: :post, class: "badge badge-primary" %></center>
 				<% else %>

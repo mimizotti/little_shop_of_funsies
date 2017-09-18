@@ -15,11 +15,13 @@ class CartsController < ApplicationController
 
   def update
     item_id = params[:id]
-    condition = params[:condition]
-    @cart.item_quantity(item_id, condition)
-    if @cart.contents[item_id] == 0
-      @cart.delete_item(item_id)
-      flash[:successfully_removed] = "Successfully removed <a href=#{item_path(item_id)}>#{Item.find(item_id).title}</a> from your cart."
+    if params[:condition] == "decrease"
+      @cart.decrease_quantity(item_id)
+      if @cart.contents[item_id] == 0
+        flash[:successfully_removed] = "Successfully removed <a href=#{item_path(item_id)}>#{Item.find(item_id).title}</a> from your cart."
+      end
+    elsif params[:condition] == "increase"
+      @cart.increase_quantity(item_id)
     end
     redirect_to cart_path
   end

@@ -13,14 +13,16 @@ class Cart
     contents[id.to_s] = (contents[id.to_s] || 0) + 1
   end
 
-  def item_quantity(id, condition)
-    if condition == "decrease"
-      if contents[id.to_s] > 0
-        contents[id.to_s] -=1
-      end
-    elsif condition == "increase"
-      contents[id.to_s] += 1
+  def decrease_quantity(id)
+    if contents[id.to_s] > 0
+      contents[id.to_s] -=1
+    else
+      delete_item(id)
     end
+  end
+
+  def increase_quantity(id)
+    contents[id] += 1
   end
 
   def count_of(id)
