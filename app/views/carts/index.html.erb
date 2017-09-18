@@ -36,7 +36,7 @@
         <th>Image</th>
 	      <th>Price</th>
         <th>Quantity</th>
-        <th>Change Quantity</th>
+        <th></th>
         <th></th>
         <th>Subtotal</th>
 	    </tr>
@@ -51,7 +51,7 @@
         <td><%= quantity %></td>
         <td><%= link_to "-", cart_path(id: item.id, condition: "decrease"), action: :update, method: :patch, class: "badge badge-danger" %>
         <%= link_to "+", cart_path(id: item.id, condition: "increase"), action: :update, method: :patch, class: "badge badge-success" %></td>
-        <td><%= link_to "Remove", cart_path(id: item.id), method: :delete %></td>
+        <td><%= link_to "Remove", cart_path(id: item.id), method: :delete, class: "badge badge-danger" %></td>
         <td>$<%= quantity * item.price %></td>
       </tr>
       </div>
