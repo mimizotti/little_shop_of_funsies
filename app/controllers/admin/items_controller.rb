@@ -13,7 +13,6 @@ before_action :require_admin
     @item = Item.new(item_params)
     if @item.save
       redirect_to admin_items_path
-      binding.pry
     else
       render :new
     end

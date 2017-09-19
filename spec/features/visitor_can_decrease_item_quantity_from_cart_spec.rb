@@ -20,7 +20,7 @@ require "rails_helper"
 
           expect(page).to have_content(19.99)
           expect(page).to have_content(@item.title)
-          expect(page).to have_content("Subtotal: $19.99")
+          expect(page).to have_content("$19.99")
        end
      end
    end
@@ -37,12 +37,11 @@ require "rails_helper"
 
         expect(page).to have_content(1)
         expect(page).to have_content(@item.title)
-        expect(page).to have_content("Subtotal: $19.99")
+        expect(page).to have_content("$19.99")
 
         click_on "-"
 
         expect(page).to have_content("Successfully removed")
-        expect(page).to_not have_content("Subtotal: $19.99")
       end
      end
    end

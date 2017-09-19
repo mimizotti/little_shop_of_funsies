@@ -8,9 +8,10 @@ RSpec.describe Order do
         user.orders.create
         expect(user.orders.first).to be_invalid
       end
+
     end
     describe 'valid attributes' do
-      it 'is valid with a status' do
+      it 'is valid with a status and address' do
         user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
         user.orders.create(status: "ordered")
         expect(user.orders.first).to be_valid

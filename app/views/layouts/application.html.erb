@@ -22,11 +22,11 @@
             font-family: 'Pacifico', cursive;
             font-size: 65px;
     }
-    div {
-            width:auto;
-            height:auto;
-            padding: 5px;
-    }
+    div.container {
+              width:800px;
+              height:auto;
+              padding: 5px;
+      }
 
     a {
             color: black;
@@ -36,6 +36,19 @@
             margin-right: auto;
             margin-left: auto;
     }
+
+    #left {
+      width: 200px;
+      float: left;
+    }
+    #right {
+      margin-left: 100px;
+      /* Change this to whatever the width of your left column is*/
+    }
+    .clear {
+      clear: both;
+    }
+
     </style>
   </head>
 
@@ -46,7 +59,11 @@
           <%= link_to 'Login', login_path, class: "nav-link active" %>
         </li>
       <% end %>
-      <% if current_user %>
+      <% if current_user && current_user.admin? %>
+        <li class="nav-item">
+          <%= link_to 'Dashboard', admin_dashboard_index_path, class: "nav-link active" %>
+        </li>
+      <% elsif current_user %>
         <li class="nav-item">
           <%= link_to 'Dashboard', dashboard_index_path, class: "nav-link active" %>
         </li>
@@ -79,7 +96,7 @@
     </ul>
     <% if flash.count > 0  %>
     <div class="center-block" style= "width: 15rem;">
-    <div class="alert alert-primary alert-dismissable container" role="alert">
+    <div class="alert alert-primary alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -93,7 +110,7 @@
       <div class="title">
         <center>
           <h1>Little Shop Of Funsies</h1><br />
-          <%= image_tag 'house-of-funsies-banner.png' %>
+          <%= link_to (image_tag ('house-of-funsies-banner.png')), root_path %>
         </center>
       </div>
     </div>
