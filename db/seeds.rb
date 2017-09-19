@@ -71,3 +71,23 @@ sloth.items.create(title: "Adult Sloth",
                       description: description,
                       price: 69.99,
                       image: "sloth-onesie.png")
+
+
+user1 = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "1111")
+
+order_1 = user1.orders.create(status: "ordered")
+OrderItem.create(item_id: 2, order: order_1, quantity:2)
+OrderItem.create(item_id: 1, order:order_1, quantity:1)
+
+user2 = User.create(first_name: "SoTesty", last_name: "DeTest", email:"test@testmail.com", password: "testing", address: "1111")
+
+order_2 = user2.orders.create(status: "completed")
+OrderItem.create(item_id: 1, order:order_2, quantity:2)
+
+order_3 = user2.orders.create(status: "completed")
+OrderItem.create(item_id: 1, order:order_3, quantity:2)
+
+user3 = User.create(first_name: "BestTest", last_name: "ReTest", email:"testing@testmail.com", password: "testing", address: "1111")
+
+order_4 = user3.orders.create(status: "completed")
+OrderItem.create(item_id: 2, order:order_4, quantity:2)
