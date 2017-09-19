@@ -1,17 +1,14 @@
 require 'rails_helper'
 
-  describe "admin dashboard feature" do
-    describe "As a logged in Admin user" do
-      describe "when I visit /admin/dashboard" do
-        it "I will see a heading on the page that says Admin Dashboard" do
+  feature "admin dashboard" do
+    scenario "admin can visit the admin dashboard" do
+      scenario "I will see a heading on the page that says Admin Dashboard" do
+        admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", role: "admin")
 
-          admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", role: "admin")
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
 
-          allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
-
-          visit admin_dashboard_index_path
-          expect(page).to have_content("Admin Dashboard")
-
+        visit admin_dashboard_index_path
+        expect(page).to have_content("Admin Dashboard")
       end
     end
   end
