@@ -9,7 +9,7 @@ RSpec.describe 'an admin can visit admin dashboard' do
 			two_items
 
 			visit admin_dashboard_index_path
-			save_and_open_page
+			
 			click_on "All Items"
 			expect(page).to have_content(@item_one.title)
 			expect(page).to have_content(@item_one.price)
