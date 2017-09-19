@@ -8,15 +8,12 @@ describe "As a logged in Admin" do
     allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)
 
     visit admin_dashboard_index_path
-
     click_on "Update your account"
-
     fill_in "user[password]", with: "testing"
     fill_in "user[email]", with: "testerson@testmail.com"
 
     click_on "Submit"
-
-    expect(page).to have_content("testerson@testmail.com")
+    expect(admin_user.password).to eq("testing")
 
   end
 
