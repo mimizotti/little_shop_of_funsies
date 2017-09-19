@@ -1,23 +1,23 @@
-<%= form_for([:admin, @item], url: admin_items_path, html: { multipart: true }) do |form| %>
+<%= form_for([:admin, @item], url: admin_item_path, html: { multipart: true }) do |form| %>
   
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title %> <br />
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description %> <br />
     <%= form.text_field :description %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label :price %> <br />
     <%= form.text_field :price %>
   </div>
 
   <div class="field">
-		<%= form.label :image %>
+		<%= form.label :image %> <br />
     <%= form.file_field :image %>
   </div>
   
