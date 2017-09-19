@@ -2,7 +2,9 @@
       <h2>Admin Dashboard</h2>
 			<%= link_to "Update your account", edit_user_path(current_user) %>
 	   <div class="col-10">
-			 <%= link_to "All orders", admin_dashboard_index_path %>
+
+			 <%= link_to "All Orders", admin_dashboard_index_path, class: "badge badge-success" %>
+			 <%= link_to "All Items", admin_items_path, class: "badge badge-success" %>
 
 	      <table class="table table-hover">
 	         <thead>
