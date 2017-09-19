@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# Category.destroy_all
+>>>>>>> b54ef0ecd089bd04a6bac07431a9c1ddee717faa
 Item.destroy_all
 Category.destroy_all
 User.destroy_all
@@ -68,17 +72,20 @@ pokemon.items.create(title: "Young Pikachu - Boy",
 pokemon.items.create(title: "Young Pikachu - Girl",
                       description: description,
                       price: 29.99,
-                      image: File.new("./app/assets/images/pikachu-onesie-girl.png"))
+                      image: File.new("./app/assets/images/pikachu-onesie-girl.png"),
+                      condition: 1)
 
 zebra.items.create(title: "Adult Zebra",
                       description: description,
                       price: 29.99,
-                      image: File.new("./app/assets/images/zebra-onesie.png"))
+                      image: File.new("./app/assets/images/zebra-onesie.png"),
+                      condition: 1)
 
 sloth.items.create(title: "Adult Sloth",
                       description: description,
                       price: 69.99,
-                      image: File.new("./app/assets/images/sloth-onesie.png"))
+                      image: File.new("./app/assets/images/sloth-onesie.png"),
+                      condition: 1)
 
 statuses = ["ordered", "paid", "cancelled", "completed"]
 users = [user_1.id, user_2.id, user_3.id]
