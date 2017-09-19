@@ -8,7 +8,7 @@ feature "Admin can view individual order pages" do
   end
 
   scenario "As an admin, when I visit an individual order page" do
-    user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
+    user = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing", address: "235 Address Place, Address CO 91050")
     order_1 = user.orders.create(status: "ordered")
     OrderItem.create(order: order_1, item: @item_one, quantity: 1)
     OrderItem.create(order: order_1, item: @item_two, quantity: 2)
@@ -22,17 +22,20 @@ feature "Admin can view individual order pages" do
 
     expect(page).to have_content(order_1.date)
     expect(page).to have_content(full_name)
-  
+
+
+
+    expect(page).to have_content(user.address)
+
 
     expect(page).to have_link(@item_one.title)
     expect(page).to have_content(@item_one.order_items.first.quantity)
     expect(page).to have_content(@item_one.price)
-    expect(page).to have_content("Subtotal: $#{@item_one.price}")
+    expect(page).to have_content(@item_one.price)
 
     expect(page).to have_link(@item_two.title)
     expect(page).to have_content(@item_two.order_items.last.quantity)
     expect(page).to have_content(@item_two.price)
-    expect(page).to have_content("Subtotal: $#{@item_two.price * 2}")
 
     expect(page).to have_content(order_1.total_price)
   end

@@ -21,20 +21,20 @@
       font-size: 3em;
     }
 </style>
-<% if current_user  %>
-<h2> <%= current_user.first_name %>'s  Cart</h2>
-<% else %>
-<h2> Your Cart </h2>
-<% end %>
 <div class="container">
+    <% if current_user  %>
+        <h3> <%= current_user.first_name %>'s  Cart</h3>
+    <% else %>
+        <h3> Your Cart </h3>
+    <% end %>
 	<center>
-	<div class="col-10">
+	<!-- <div class="col-10"> -->
 	<table class="table table-hover">
 	  <thead>
 	    <tr>
 	      <th>Name</th>
         <th></th>
-	      <th>Price</th>
+        <th>Price</th>
         <th>Quantity</th>
         <th></th>
         <th></th>
@@ -73,6 +73,6 @@
         <%= link_to "Create new account", new_user_path %>
       <% end %>
     </div>
-  </div>
+  <!-- </div> -->
 </center>
 </div>

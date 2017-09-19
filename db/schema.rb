@@ -10,16 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915132625) do
+ActiveRecord::Schema.define(version: 20170918203915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string "title"
-    t.string "slug"
-    t.index ["slug"], name: "index_categories_on_slug", unique: true
-  end
 
   create_table "items", force: :cascade do |t|
     t.string "title"
@@ -30,9 +25,19 @@ ActiveRecord::Schema.define(version: 20170915132625) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "condition", default: 0
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+  
   create_table "order_items", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "order_id"
@@ -48,6 +53,10 @@ ActiveRecord::Schema.define(version: 20170915132625) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
