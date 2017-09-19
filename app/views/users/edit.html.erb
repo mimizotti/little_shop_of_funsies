@@ -1,11 +1,3 @@
-<div class="container">
-  <h3>Update Your Account:</h3>
-  <%= form_for @user do |f| %>
 
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+<%= render partial: "form" %>
 
-    <%= f.submit "Submit" %>
-
-  <% end %>
-</div>
