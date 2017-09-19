@@ -4,7 +4,10 @@ class Item < ApplicationRecord
 	has_many :orders, through: :order_items
 	validates :title     ,  presence: true, uniqueness: true
 	validates :description, :price, presence: true
-	has_attached_file :image, default_url: File.new("./app/assets/images/missing.jpg")
-	validates_attachment_content_type :image, content_type: ['image/jpeg', 'image/gif', 'image/png']
+	has_attached_file :image,
+	:default_url => '/images/missing.jpg',
+	:path => ":rails_root/public/images/:id/:style/:filename",
+  :url => "/images/:id/:style/:filename"
+	validates_attachment_content_type :image, content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png']
 	enum condition: ["active", "retired"]
 end
