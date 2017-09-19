@@ -1,7 +1,7 @@
 # Category.destroy_all
-Item.destroy_all
-User.destroy_all
-Order.destroy_all
+# Item.destroy_all
+# User.destroy_all
+# Order.destroy_all
 
 User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi", address: "666 Spooky Ave, Halloween City, NO 66666", role: 1)
 user_1 = User.create!(first_name: "Ricky", last_name: "Hoola", email: "ricky@ricky.com", password: "ricky", address: "1111 Hoola Hoop Drive, Big Island, HI 90505", role: 0)
