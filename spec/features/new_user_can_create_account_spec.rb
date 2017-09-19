@@ -9,9 +9,9 @@ feature "New user can create an account" do
     click_on "Login"
 
     expect(current_path).to eq(login_path)
-    expect(page).to have_link("Create Account")
+    expect(page).to have_link("Create an account")
 
-    click_on "Create Account"
+    click_on "Create an account"
 
     fill_in "user[first_name]", with: "Tester"
     fill_in "user[last_name]", with: "McTesty"

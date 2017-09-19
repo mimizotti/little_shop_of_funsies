@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def update
     if current_admin?
       current_user.update(user_params)
-      redirect_to admin_dashboards_path
+      redirect_to admin_dashboard_index_path
     elsif current_user != nil
       current_user.update(user_params)
       redirect_to dashboard_index_path
