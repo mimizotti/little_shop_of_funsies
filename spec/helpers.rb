@@ -9,35 +9,12 @@ module Helpers
 
   def two_items
     @one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
-		@two_url = "https://www.kcmaustralia.com/media/Animal%20Onesie/adventure%20time%20jake%20onesie.jpg"
+		@two_url = "https://cdn.shopify.com/s/files/1/0768/3211/products/eeyore-kigurumi-onesie-sazac-23866341901_2048x2048_61d2ab59-04ea-4a67-a997-b6443780a1c9_2048x2048.jpg?v=1500604859"
 		@category = Category.create(title: "Animals")
 		@item_one = @category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00,
 		image: @one_url )
 		@item_two = @category.items.create(title: "Funsie Twosie", description: "too awesome", price: 12.00,
 		image: @two_url )
-  end
-
-  def create_orders
-
-    user1 = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
-
-    order_1 = user1.orders.create(status: "ordered")
-    order_1.items << @item_one
-    order_1.items << @item_two
-
-    user2 = User.create(first_name: "SoTesty", last_name: "DeTest", email:"test@testmail.com", password: "testing")
-
-    order_2 = user2.orders.create(status: "compeleted")
-    order_2.items << @item_one
-
-    order_3 = user2.orders.create(status: "compeleted")
-    order_3.items << @item_one
-    order_3.items << @item_two
-
-    user3 = User.create(first_name: "BestTest", last_name: "ReTest", email:"testing@testmail.com", password: "testing")
-
-    order_4 = user3.orders.create(status: "compeleted")
-    order_4 << @item_one
   end
 
   def twelve_items
@@ -56,62 +33,62 @@ module Helpers
     @unicorn_onesie_1 = @unicorn.items.create(title: "Baby Unicorn",
                           description: description,
                           price: 39.99,
-                          image: "baby-unicorn-onesie.png")
+                          image: File.new("./app/assets/images/baby-unicorn-onesie.png"))
 
     @unicorn_onesie_2 = @unicorn.items.create(title: "Adult Unicorn",
                           description: description,
                           price: 59.99,
-                          image: "unicorn-onesie.png")
+                          image: File.new("./app/assets/images/unicorn-onesie.png"))
 
     @squirrel_onesie_1 = @squirrel.items.create(title: "Adult Squirrel - Pink/White",
                           description: description,
                           price: 59.99,
-                          image: "flying-squirrel-onesie-1.png")
+                          image: File.new("./app/assets/images/flying-squirrel-onesie-1.png"))
 
     @squirrel_onesie_2 = @squirrel.items.create(title: "Adult Squirrel - Orange/Black",
                           description: description,
                           price: 59.99,
-                          image: "flying-squirrel-onesie-2.png")
+                          image: File.new("./app/assets/images/flying-squirrel-onesie-2.png"))
 
     @giraffe_onesie_1 = @giraffe.items.create(title: "Adult Giraffe",
                           description: description,
                           price: 59.99,
-                          image: "giraffe-onesie.png")
+                          image: File.new("./app/assets/images/giraffe-onesie.png"))
 
     @cat_onesie_1 = @cat.items.create(title: "Adult Leopard",
                           description: description,
                           price: 49.99,
-                          image: "leopard-onesie.png")
+                          image: File.new("./app/assets/images/leopard-onesie.png"))
 
     @cat_onesie_2 = @cat.items.create(title: "Adult Tiger",
                           description: description,
                           price: 49.99,
-                          image: "tiger-onesie.png")
+                          image: File.new("./app/assets/images/tiger-onesie.png"))
 
     @penguin_onesie_1 = @penguin.items.create(title: "Adult Penguin",
                           description: description,
                           price: 49.99,
-                          image: "penguin-onesie.png")
+                          image: File.new("./app/assets/images/penguin-onesie.png"))
 
     @pokemon_onesie_1 = @pokemon.items.create(title: "Young Pikachu - Boy",
                           description: description,
                           price: 29.99,
-                          image: "pikachu-onesie-boy.png")
+                          image: File.new("./app/assets/images/pikachu-onesie-boy.png"))
 
     @pokemon_onesie_2 = @pokemon.items.create(title: "Young Pikachu - Girl",
                           description: description,
                           price: 29.99,
-                          image: "pikachu-onesie-girl.png")
+                          image: File.new("./app/assets/images/pikachu-onesie-girl.png"))
 
     @zebra_onesie_1 = @zebra.items.create(title: "Adult Zebra",
                           description: description,
                           price: 29.99,
-                          image: "zebra-onesie.png")
+                          image: File.new("./app/assets/images/zebra-onesie.png"))
 
     @sloth_onesie_1 = @sloth.items.create(title: "Adult Sloth",
                           description: description,
                           price: 69.99,
-                          image: "sloth-onesie.png")
+                          image: File.new("./app/assets/images/sloth-onesie.png"))
 
   end
 
@@ -119,8 +96,8 @@ module Helpers
     twelve_items
     @user_1 = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi")
     @user_2 = User.create(first_name: "Jake", last_name: "the Dog", email: "jake@adventuretime.com", password: "dog")
-
-    @order = Order.create(status: "ordered", user_id: @user_1.id)
+    @address = Address.create(street: "123 maple", city: "englewood", state: "CO", zip: 80113, user: @user_1)
+    @order = Order.create(status: "ordered", user_id: @user_1.id, address: @address)
 
     items_hash = {
                     @unicorn_onesie_1 => 1,
@@ -129,7 +106,6 @@ module Helpers
 
     @order.add(items_hash)
   end
-
   def more_orders
     setup
 
