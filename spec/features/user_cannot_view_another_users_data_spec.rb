@@ -23,7 +23,7 @@ RSpec.feature "Authenticated users security" do
       visit order_path(@order)
 
       expect(current_path).to eq(dashboard_index_path)
-      expect(page).to have_content(@user_2.email)
+      expect(page).to have_content(@user_2.first_name)
     end
     it "I cannot view the administrator screens" do
       visit admin_dashboard_index_path

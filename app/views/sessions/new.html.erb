@@ -1,7 +1,5 @@
 <div class="container">
   <div class="row">
-    <div class="col-2">
-    </div>
     <div class="col-3">
     <table class="table">
       <%= form_for(:session, url: login_path) do |f| %>
@@ -15,7 +13,7 @@
         </tr>
         <tr class="action">
           <td class="table-light"><%= f.submit name="Login", class: "btn btn-primary" %></td>
-          <td class="table-light"><small>Don't have an account with us? <%= link_to "Create Account", new_user_path %></small></td>
+          <td class="table-light"><small>Don't have an account with us? <%= link_to "Create an account", new_user_path %>.</small></td>
         </tr>
       <% end %>
     </div>

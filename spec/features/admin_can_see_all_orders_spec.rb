@@ -3,15 +3,14 @@ require 'rails_helper'
 RSpec.feature "Admin Orders" do
   before(:each) do
     more_orders
-    admin = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi", role: 1)
+    admin = User.create(first_name: "Mi", last_name: "Le", email: "mi@mi.com", password: "mimi", role: "admin")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
   end
   context "As an admin" do
     it "I can see the total number of orders for each status" do
-
       visit admin_dashboard_index_path
-
+      
       orders = [@order, @order_2, @order_3, @order_4]
 
       orders.each do |order|

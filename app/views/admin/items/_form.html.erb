@@ -1,0 +1,32 @@
+<%= form_for([:admin, @item], html: { multipart: true }) do |form| %>
+  
+
+  <div class="field">
+    <%= form.label :title %> <br />
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %> <br />
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %> <br />
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+		<%= form.label :image %> <br />
+    <%= form.file_field :image %>
+  </div>
+  
+  <div class="category_select_box">
+    <%= form.select(:category_id, @categories.map { |category| [category.title, category.id] }) %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

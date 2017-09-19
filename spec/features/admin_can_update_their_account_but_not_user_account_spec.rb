@@ -5,18 +5,16 @@ describe "As a logged in Admin" do
 
     admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", role: "admin")
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user). and_return(admin_user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
 
     visit admin_dashboard_index_path
-
     click_on "Update your account"
-
     fill_in "user[password]", with: "testing"
     fill_in "user[email]", with: "testerson@testmail.com"
 
     click_on "Submit"
+    expect(admin_user.password).to eq("testing")
 
-    expect(page).to have_content("testerson@testmail.com")
 
   end
 
@@ -29,7 +27,7 @@ describe "As a logged in Admin" do
 
       visit dashboard_index_path(user)
 
-      expect(page).not_to have_content("Update your account")
+      expect(page).not_to have_content("Update account")
 
     end
 
