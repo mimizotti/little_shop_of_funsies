@@ -1,13 +1,33 @@
-<h4>Order:</h4>
-<ul>
-	<ui>Total Price: $<%= @order.total_price %></ui>
-	<ui>Order Date: <%= @order.date %></ui>
-	<ui>Order Placed by: <%= @order.user.full_name %></ui>
-	<ui>Order Address: <%= @order.user.address %></ui>
-	<ul>
-		<% @order.items.each do |item| %>
-		<ui> <%= link_to "#{item.title}", item_path(item) %>: $<%= item.price %></ui> <br>
-		<ui> Subtotal: $<%= item.price * item.order_items.first.quantity %>  </ui> <br>
-		<% end %>
-	</ul>
-</ul>
+<div class="container">
+	<h4>Order #<%= @order.id %></h4>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Thumbnail</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+	      <% @order.items.each do |item| %>
+        <tr>
+          <th scope="row"><h6><%= image_tag item.image, class: "card-img-top", style: "max-height: 100px; max-width: 100px;" %></h6></th>
+          <td><%= link_to item.title, item_path(item) %></td>
+          <td><%= OrderItem.find(item.id).quantity %></td>
+          <td>$<%= item.price %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td>Total Price:</td>
+          <td>$<%= @order.total_price %></td>
+       </tr>
+      </tbody>
+    </table>
+
+    <p><b>Order Date:</b> <%= @order.date %><br />
+    <b>Order Placed by:</b> <%= @order.user.full_name %><br />
+    <b>Order Address:</b> <%= @order.user.address %></p>
+</div>

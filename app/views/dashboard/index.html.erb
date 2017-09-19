@@ -1,3 +1,20 @@
-<h2>This is the User Dashboard</h2>
-
-Your email account is <%= @user.email %>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">My Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/orders">My Orders</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Welcome back, <%= @user.first_name %>!</h4>
+      <p class="card-text">You've been a member since <%= @user.date_joined %>. Yay!<br />
+      The e-mail address we have on file is <%= @user.email %>.</p>
+      <a href="/items" class="btn btn-primary">Shop our onesies</a>
+    </div>
+  </div>
+</div>
