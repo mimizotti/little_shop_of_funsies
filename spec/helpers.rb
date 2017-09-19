@@ -96,8 +96,7 @@ module Helpers
     twelve_items
     @user_1 = User.create(first_name: "Mimi", last_name: "Le", email: "mimi@mimi.com", password: "mimi")
     @user_2 = User.create(first_name: "Jake", last_name: "the Dog", email: "jake@adventuretime.com", password: "dog")
-    @address = Address.create(street: "123 maple", city: "englewood", state: "CO", zip: 80113, user: @user_1)
-    @order = Order.create(status: "ordered", user_id: @user_1.id, address: @address)
+    @order = Order.create(status: "ordered", user_id: @user_1.id)
 
     items_hash = {
                     @unicorn_onesie_1 => 1,
