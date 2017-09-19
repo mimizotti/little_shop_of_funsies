@@ -14,7 +14,8 @@ describe "As an admin when I visit the dashboard" do
       it " I can see the total sales for each item" do
         it "I can see the total count sold for each item" do
 
-          visit admin_dashboard_index 
+          visit admin_dashboard_index
+          
 
 
         end
