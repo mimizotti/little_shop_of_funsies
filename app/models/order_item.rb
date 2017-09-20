@@ -15,10 +15,6 @@ class OrderItem < ApplicationRecord
 		end
 	end
 
-	def self.shop_total_gross
-		joins(:item).sum(:price)
-	end
-
 	def self.average_quantity
 		average(:quantity).to_i
 	end

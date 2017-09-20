@@ -6,6 +6,7 @@
 <body>
 	<div class = "container">
     <center><h1> Analytics</h1></center><br>
+    <%= link_to "Back to Admin Dashboard", admin_dashboard_index_path %>
     <div class="row text-center">
       <div class='col-6 card bg-success'>
         <div class='card-body '>
@@ -19,15 +20,24 @@
       </div>
       <div class='col-6 card bg-warning'>
         <div class='card-body '>
-          <p>Quantity ordered per item: <% @analytics.sales_by_item_title.each do |key, value| %>
+          <p><strong>Quantity ordered per item:</strong><br> <% @analytics.sales_by_item_title.each do |key, value| %>
+          <%= key %>: <%= value  %><br>
+          <% end %></p>
+        </div>
+      </div>
+      <div class='col-6 card bg-success'>
+        <div class='card-body '>
+          <p><strong>Number of orders each customer has placed:</strong><br> <% @analytics.orders_per_customer.each do |key, value| %>
           <%= key %>: <%= value  %><br>
           <% end %> </p>
         </div>
       </div>
+      <div class='col-12 card bg-danger'>
+				<div class='card-body '>
 
-<p>Number of orders each customer has placed: <%= @analytics.orders_per_customer %> </p>
-
-<p>Number of items each customer has ordered: <%= @analytics.items_ordered_per_customer %>
+<p><strong>Number of items each customer has ordered:<br></strong> <% @analytics.items_ordered_per_customer.each do |key, value| %>
+  <%= key %>: <%= value %>
+  <% end %>
     </div>
   </div>
 </body>

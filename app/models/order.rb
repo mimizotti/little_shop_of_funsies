@@ -34,4 +34,8 @@ class Order < ApplicationRecord
     where(status: :completed).count
   end
 
+  def self.shop_total_gross
+		where(status: :completed).joins(:items).sum(:price)
+	end
+
 end
