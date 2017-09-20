@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe Item do
 	describe 'validations' do
 		describe 'invalid attributes' do
@@ -10,14 +9,14 @@ describe Item do
 				item = category.items.create(description: "number one", price: 8.00, image: one_url )
 				expect(item).to be_invalid
 			end
-			
+
 			it 'is invalid without a description' do
 				category = Category.create(title: "Animals")
 				one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
 				item = category.items.create(title: "Funsie Onesie", price: 8.00, image: one_url )
 				expect(item).to be_invalid
 			end
-			
+
 			it 'is invalid without a price' do
 				category = Category.create(title: "Animals")
 				one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
@@ -29,7 +28,7 @@ describe Item do
 				item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00,)
 				expect(item).to be_valid
 			end
-			
+
 			it 'is invalid without a unique title' do
 				category = Category.create(title: "Animals")
 				two_url = "https://cdn.shopify.com/s/files/1/0768/3211/products/eeyore-kigurumi-onesie-sazac-23866341901_2048x2048_61d2ab59-04ea-4a67-a997-b6443780a1c9_2048x2048.jpg?v=1500604859"
@@ -73,5 +72,13 @@ describe Item do
 			image: one_url )
       expect(item).to respond_to(:category)
     end
+
+		it "has many orders" do
+			category = Category.create(title: "Animals")
+			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
+			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00)
+
+			expect(item).to respond_to(:orders)
+		end
   end
 end
