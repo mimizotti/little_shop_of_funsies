@@ -11,7 +11,7 @@ RSpec.describe Order do
 
     end
     describe 'valid attributes' do
-      it 'is valid with a status and address' do
+      it 'is valid with a status' do
         user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
         user.orders.create(status: "ordered")
         expect(user.orders.first).to be_valid
@@ -34,9 +34,36 @@ RSpec.describe Order do
       order = user.orders.create(status: "ordered")
       category = Category.create(title: "Animals")
       one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
-			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00,
-			image: one_url )
+			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url )
       expect(item).to respond_to(:orders)
     end
   end
+
+	describe "instance methods" do
+		it "can return total price of items" do
+			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			order = user.orders.create!(status: "ordered")
+			category = Category.create(title: "Animals")
+			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
+			item_1 = order.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url, category_id: 1)
+			item_2 = order.items.create(title: "Funsie Twosie", description: "number two", price: 22.00, image: one_url, category_id: 1)
+
+			expect(order.total_price).to eq(30.0)
+		end
+
+		it "can add an item" do
+			user = User.create!(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			order = user.orders.create!(status: "ordered")
+			category = Category.create(title: "Animals")
+			one_url = "http://pandathings.com/wp-content/uploads/2016/10/onesie-6-300x300.png"
+			item = category.items.create(title: "Funsie Onesie", description: "number one", price: 8.00, image: one_url)
+			item_hash = {item => 1}
+
+			expect(order.items).to eq([])
+
+			order.add(item_hash)
+
+			expect(order.items.first).to eq(item)
+		end
+	end
 end
