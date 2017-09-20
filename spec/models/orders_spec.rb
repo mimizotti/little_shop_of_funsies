@@ -73,4 +73,35 @@ RSpec.describe Order do
 			expect(order.date).to eq("Sep. 13, 2017")
 		end
 	end
+
+	describe "class methods" do
+		it "can count by status" do
+			user = User.create(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			user.orders.create(status: "ordered")
+			user.orders.create(status: "ordered")
+			user.orders.create(status: "ordered")
+			user.orders.create(status: "paid")
+			user.orders.create(status: "paid")
+			user.orders.create(status: "cancelled")
+
+			status_count = {"paid"=>2, "ordered"=>3, "cancelled"=>1}
+
+			expect(Order.count_by_status).to eq(status_count)
+		end
+
+		it "can filter by status" do
+			user = User.create(first_name: "Testy", last_name: "McTest", password: "testing", email: "tester@testmail")
+			order_1 = user.orders.create(status: "ordered")
+			user.orders.create(status: "ordered")
+			user.orders.create(status: "ordered")
+			user.orders.create(status: "paid")
+			user.orders.create(status: "paid")
+			user.orders.create(status: "cancelled")
+
+			collection = Order.filter_by_status("ordered")
+
+			expect(collection.first).to eq(order_1)
+			expect(collection.count).to eq(3)
+		end
+	end
 end
