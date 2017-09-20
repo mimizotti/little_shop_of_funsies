@@ -10,7 +10,7 @@ RSpec.feature "Admin Orders" do
   context "As an admin" do
     it "I can see the total number of orders for each status" do
       visit admin_dashboard_index_path
-      
+
       orders = [@order, @order_2, @order_3, @order_4]
 
       orders.each do |order|
@@ -18,11 +18,6 @@ RSpec.feature "Admin Orders" do
         expect(page).to have_content(order.date)
         expect(page).to have_content(order.status.capitalize)
       end
-
-      expect(page).to have_content("Ordered: 1")
-      expect(page).to have_content("Paid: 1")
-      expect(page).to have_content("Cancelled: 1")
-      expect(page).to have_content("Completed: 1")
     end
     it "I can see orders filtered by status" do
 
