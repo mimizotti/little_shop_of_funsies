@@ -10,4 +10,6 @@ class Item < ApplicationRecord
   :url => "/images/:id/:style/:filename"
 	validates_attachment_content_type :image, content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png']
 	enum condition: ["active", "retired"]
+
+
 end

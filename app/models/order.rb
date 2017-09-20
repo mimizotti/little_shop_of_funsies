@@ -30,4 +30,6 @@ class Order < ApplicationRecord
     where(status: status)
   end
 
+
+
 end
