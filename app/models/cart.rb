@@ -23,7 +23,7 @@ class Cart
   end
 
   def increase_quantity(id)
-    contents[id] += 1
+    contents[id.to_s] += 1
   end
 
   def count_of(id)

@@ -37,7 +37,7 @@ require 'rails_helper'
 
     end
   end
-end
+
 
 feature "as an Admin" do
   describe "when I log into my account" do
