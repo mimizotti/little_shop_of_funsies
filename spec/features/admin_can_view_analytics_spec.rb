@@ -11,8 +11,9 @@ describe "As an admin when I visit the dashboard" do
   end
   describe " I see a table" do
     it " that ranks our items by popularity" do
-            visit admin_dashboard_index_path
+            visit admin_analytics_path
             save_and_open_page
+
   #
   #     it " I can see the total sales for each item" do
   #       it "I can see the total count sold for each item" do

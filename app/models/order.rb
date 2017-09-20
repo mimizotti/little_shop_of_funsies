@@ -30,6 +30,8 @@ class Order < ApplicationRecord
     where(status: status)
   end
 
-
+  def self.count_of_completed_orders
+    where(status: :completed).count
+  end
 
 end
