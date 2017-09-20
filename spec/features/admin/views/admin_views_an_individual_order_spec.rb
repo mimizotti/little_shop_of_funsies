@@ -22,7 +22,11 @@ feature "Admin can view individual order pages" do
 
     expect(page).to have_content(order_1.date)
     expect(page).to have_content(full_name)
+
+
+
     expect(page).to have_content(user.address)
+
 
     expect(page).to have_link(@item_one.title)
     expect(page).to have_content(@item_one.order_items.first.quantity)

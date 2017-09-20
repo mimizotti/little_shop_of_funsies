@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		unless current_user.id == @order.user_id || current_user.admin?
+		unless current_user.id == @order.user_id || current_admin?
 			redirect_to dashboard_index_path
 		end
 	end
