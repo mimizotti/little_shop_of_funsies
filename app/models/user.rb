@@ -7,6 +7,19 @@ class User < ApplicationRecord
 
   enum role: ["default", "admin"]
 
+  def self.from_omniauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.email = auth.info.email
+      user.address = "1331 17th St ll100, Denver, CO 80202"
+      user.password = 'jeffcasimir'
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save
+    end
+  end
+
   def full_name
     first_name + " " + last_name
   end
