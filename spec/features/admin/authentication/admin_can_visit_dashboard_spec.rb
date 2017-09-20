@@ -1,7 +1,7 @@
 require 'rails_helper'
 
   feature "admin dashboard" do
-    scenario "admin can visit the admin dashboard" do
+    feature "admin can visit the admin dashboard" do
       scenario "I will see a heading on the page that says Admin Dashboard" do
         admin_user = User.create(first_name: "Admin", last_name: "McAdmin", email: "admin@admin.com", password: "boom", role: "admin")
 
