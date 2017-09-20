@@ -54,7 +54,7 @@ feature "as an Admin" do
         click_on("Login")
       end
 
-      expect(page).to have_content("Admin Dashboard")
+      expect(page).to have_content("You're logged in as an Administrator.")
 
       expect(current_path).to eq(admin_dashboard_index_path)
     end

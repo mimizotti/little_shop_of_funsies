@@ -8,7 +8,7 @@ describe "As a logged in Admin" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
 
     visit admin_dashboard_index_path
-    click_on "Update your account"
+    click_on "Update Account"
     fill_in "user[password]", with: "testing"
     fill_in "user[email]", with: "testerson@testmail.com"
 
