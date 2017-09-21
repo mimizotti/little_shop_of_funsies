@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-# Category.destroy_all
->>>>>>> b54ef0ecd089bd04a6bac07431a9c1ddee717faa
 Item.destroy_all
 Category.destroy_all
 User.destroy_all
