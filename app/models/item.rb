@@ -12,7 +12,7 @@ class Item < ApplicationRecord
 	enum condition: ["active", "retired"]
 
 
-	def self.items_sold_by_title
+	def self.total_sold_by_item
 		group(:title).joins(:order_items).sum(:quantity)
 	end
 
