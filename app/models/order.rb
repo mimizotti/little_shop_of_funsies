@@ -7,7 +7,6 @@ class Order < ApplicationRecord
   enum status: ["ordered", "paid", "cancelled", "completed"]
 
   def total_price
-    binding.pry
     items.sum(:price)
   end
 
@@ -15,7 +14,6 @@ class Order < ApplicationRecord
     item_hash.each do |item, quantity|
       items << item
       order_item = OrderItem.find_by(order: self, item_id: item.id)
-      binding.pry
       order_item.update(quantity: quantity)
     end
   end

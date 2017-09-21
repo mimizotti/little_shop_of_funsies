@@ -18,12 +18,19 @@
           <td>$<%= item.price %></td>
         </tr>
         <% end %>
+        </tbody>
         <tr>
-          <th scope="row"></th>
-          <td></td>
-          <td>Total Price:</td>
-          <td>$<%= @order.total_price %></td>
-       </tr>
+            <th></th>
+            <th></th>
+            <th>Total:</th>
+        <td>
+            <% sum = 0 %>
+            <% @order.items.each do |item| %>
+            <% sum += (item.price * OrderItem.find_by(item: item, order: @order).quantity) %>
+            <% end %>
+            Total: $<%= sum %>
+            </td>
+        </tr>
       </tbody>
     </table>
 
