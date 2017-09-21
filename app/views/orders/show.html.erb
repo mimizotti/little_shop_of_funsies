@@ -5,8 +5,8 @@
           <tr>
             <th>Thumbnail</th>
             <th>Title</th>
+						<th>Quantity</th>
             <th>Price</th>
-            <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
@@ -14,7 +14,7 @@
         <tr>
           <th scope="row"><h6><%= image_tag item.image, class: "card-img-top", style: "max-height: 100px; max-width: 100px;" %></h6></th>
           <td><%= link_to item.title, item_path(item) %></td>
-          <td><%= OrderItem.find(item.id).quantity %></td>
+          <td><%= OrderItem.find_by(item: item, order: @order).quantity %></td>
           <td>$<%= item.price %></td>
         </tr>
         <% end %>
