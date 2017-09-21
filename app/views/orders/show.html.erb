@@ -23,7 +23,7 @@
             <th></th>
             <th></th>
             <th>Total:</th>
-        <td>
+            <td>
             <% sum = 0 %>
             <% @order.items.each do |item| %>
             <% sum += (item.price * OrderItem.find_by(item: item, order: @order).quantity) %>
