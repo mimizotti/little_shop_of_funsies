@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Analytics</title>
+</head>
+<body>
+	<div class = "container">
+    <center><h1> Analytics</h1></center><br>
+    <%= link_to "Back to Admin Dashboard", admin_dashboard_index_path %>
+    <div class="row text-center">
+      <div class='col-6 card bg-success'>
+        <div class='card-body '>
+        <p><strong>Total shop sales to date: $ <%= @analytics.total_sales %>. <br>Total completed orders: <%= @analytics.completed_orders %></strong></p>
+        </div>
+      </div>
+      <div class='col-6 card bg-primary'>
+        <div class='card-body '>
+          <p><strong> Average number of onsies per order: <%= @analytics.average_quantity_purchaced %></strong></p>
+        </div>
+      </div>
+      <div class='col-6 card bg-warning'>
+        <div class='card-body '>
+          <p><strong>Quantity ordered per item:</strong><br> <% @analytics.sales_by_item_title.each do |key, value| %>
+          <%= key %>: <%= value  %><br>
+          <% end %></p>
+        </div>
+      </div>
+      <div class='col-6 card bg-success'>
+        <div class='card-body '>
+          <p><strong>Number of orders each customer has placed:</strong><br> <% @analytics.orders_per_customer.each do |key, value| %>
+          <%= key %>: <%= value  %><br>
+          <% end %> </p>
+        </div>
+      </div>
+      <div class='col-12 card bg-danger'>
+				<div class='card-body '>
+
+<p><strong>Number of items each customer has ordered:<br></strong> <% @analytics.items_ordered_per_customer.each do |key, value| %>
+  <%= key %>: <%= value %>
+  <% end %>
+    </div>
+  </div>
+</body>

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     @user = User.find(session[:user_id]) if session[:user_id]
   end
 
+
   def current_admin?
     current_user && current_user.admin?
   end
@@ -20,4 +21,8 @@ class ApplicationController < ActionController::Base
     @categories = Category.all
   end
 
+  private
+    def require_admin
+      render file: "/public/404" unless current_admin?
+    end
 end

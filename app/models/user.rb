@@ -28,4 +28,11 @@ class User < ApplicationRecord
     created_at.strftime('%b. %d, %Y')
   end
 
+  def self.user_orders
+    group(:email).joins(:orders).count
+  end
+
+  def self.user_quantity_of_items_ordered
+    group(:email).joins(orders: :order_items).sum(:quantity)
+  end
 end

@@ -22,22 +22,22 @@ module Helpers
     user1 = User.create(first_name: "Tester", last_name: "McTesty", email: "testerson@testmail.com", password: "testing")
 
     order_1 = user1.orders.create(status: "ordered")
-    order_1.items << @item_one
-    order_1.items << @item_two
+    order_1.items <<@unicorn_onesie_1
+    order_1.items << @giraffe_onesie_1
 
     user2 = User.create(first_name: "SoTesty", last_name: "DeTest", email:"test@testmail.com", password: "testing")
 
-    order_2 = user2.orders.create(status: "compeleted")
-    order_2.items << @item_one
+    order_2 = user2.orders.create(status: "completed")
+    order_2.items << @unicorn_onesie_1
 
-    order_3 = user2.orders.create(status: "compeleted")
-    order_3.items << @item_one
-    order_3.items << @item_two
+    order_3 = user2.orders.create(status: "completed")
+    order_3.items << @unicorn_onesie_1
+    order_3.items << @giraffe_onesie_1
 
     user3 = User.create(first_name: "BestTest", last_name: "ReTest", email:"testing@testmail.com", password: "testing")
 
-    order_4 = user3.orders.create(status: "compeleted")
-    order_4 << @item_one
+    order_4 = user3.orders.create(status: "completed")
+    order_4.items << @unicorn_onesie_1
   end
   def twelve_items
 
