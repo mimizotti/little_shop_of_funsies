@@ -12,7 +12,6 @@ describe "As an admin when I visit the dashboard" do
   describe " I see a table" do
     it " that ranks our items by popularity" do
             visit admin_analytics_path
-            save_and_open_page
 
   #
   #     it " I can see the total sales for each item" do

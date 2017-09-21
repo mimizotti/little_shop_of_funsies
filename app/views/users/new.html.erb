@@ -1,5 +1,10 @@
 <div class="container">
-  <%= image_tag 'createaccount.png' %>
+  <div id="left">
+    <%= image_tag 'createaccount.png' %>
+  </div>
+  <div id="right">
+    <%= link_to image_tag("sign_in_with_google.png"), "/auth/google_oauth2" %>
+  </div>
 </div>
 
 <%= render partial: "form" %>
