@@ -4,7 +4,7 @@ class BizIntel
     Order.shop_total_gross
   end
 
-  def average_quantity_purchaced
+  def average_quantity_purchased
     OrderItem.average_quantity
   end
 
