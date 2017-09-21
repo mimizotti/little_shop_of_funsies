@@ -1,43 +1,68 @@
-<!DOCTYPE html>
-<head>
-	<meta charset="utf-8">
-	<title>Analytics</title>
-</head>
-<body>
-	<div class = "container">
-    <center><h1> Analytics</h1></center><br>
-    <%= link_to "Back to Admin Dashboard", admin_dashboard_index_path %>
-    <div class="row text-center">
-      <div class='col-6 card bg-success'>
-        <div class='card-body '>
-        <p><strong>Total shop sales to date: $ <%= @analytics.total_sales %>. <br>Total completed orders: <%= @analytics.completed_orders %></strong></p>
-        </div>
-      </div>
-      <div class='col-6 card bg-primary'>
-        <div class='card-body '>
-          <p><strong> Average number of onsies per order: <%= @analytics.average_quantity_purchased %></strong></p>
-        </div>
-      </div>
-      <div class='col-6 card bg-warning'>
-        <div class='card-body '>
-          <p><strong>Quantity ordered per item:</strong><br> <% @analytics.sales_by_item_title.each do |key, value| %>
-          <%= key %>: <%= value  %><br>
-          <% end %></p>
-        </div>
-      </div>
-      <div class='col-6 card bg-success'>
-        <div class='card-body '>
-          <p><strong>Number of orders each customer has placed:</strong><br> <% @analytics.orders_per_customer.each do |key, value| %>
-          <%= key %>: <%= value  %><br>
-          <% end %> </p>
-        </div>
-      </div>
-      <div class='col-12 card bg-danger'>
-				<div class='card-body '>
 
-<p><strong>Number of items each customer has ordered:<br></strong> <% @analytics.items_ordered_per_customer.each do |key, value| %>
-  <%= key %>: <%= value %>
-  <% end %>
+<div class="container">
+  <nav class="nav nav-tabs" id="myTab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-expanded="true">Customer Analytics</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Item Analytics</a>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <table class="table">
+        <thead class="thead-default">
+          <tr>
+            <th><i>Customer<i></th>
+            <th><center><i>Total Orders To-Date<i></center></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @analytics.orders_per_customer.each do |key, value| %>
+          <tr>
+            <th scope="row"><%= key %></th>
+            <td><center><%= value %></center></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <thead class="thead-default">
+          <tr>
+            <th><i>Customer<i></th>
+            <th><center><i>Items Ordered To-Date<i></center></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @analytics.items_ordered_per_customer.each do |key, value| %>
+          <tr>
+            <th scope="row"><%= key %></th>
+            <td><center><%= value %></center></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <p>
+      Total shop sales to date: $ <%= @analytics.total_sales %>. <br>
+      Total completed orders: <%= @analytics.completed_orders %> <br>
+      Average number of onsies per order: <%= @analytics.average_quantity_purchaced %>
+    </p>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <table class="table">
+        <thead class="thead-default">
+          <tr>
+            <th><i>Item<i></th>
+            <th><center><i>Quantity Sold To-Date<i></center></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @analytics.sales_by_item_title.each do |key, value| %>
+          <tr>
+            <th scope="row"><%= key %></th>
+            <td><center><%= value %></center></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
-</body>
+</div>
